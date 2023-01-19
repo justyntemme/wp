@@ -6,9 +6,6 @@ import (
 	"fmt"
 	endpoint1 "github.com/go-kit/kit/endpoint"
 	log "github.com/go-kit/kit/log"
-	endpoint "github.com/justyntemme/wp/user/pkg/endpoint"
-	http1 "github.com/justyntemme/wp/user/pkg/http"
-	service "github.com/justyntemme/wp/user/pkg/service"
 	lightsteptracergo "github.com/lightstep/lightstep-tracer-go"
 	group "github.com/oklog/oklog/pkg/group"
 	opentracinggo "github.com/opentracing/opentracing-go"
@@ -16,13 +13,18 @@ import (
 	zipkingo "github.com/openzipkin/zipkin-go"
 	http "github.com/openzipkin/zipkin-go/reporter/http"
 	promhttp "github.com/prometheus/client_golang/prometheus/promhttp"
+	grpc1 "google.golang.org/grpc"
 	"net"
-	http2 "net/http"
+	http1 "net/http"
 	"os"
 	"os/signal"
 	appdash "sourcegraph.com/sourcegraph/appdash"
 	opentracing "sourcegraph.com/sourcegraph/appdash/opentracing"
 	"syscall"
+	endpoint "user/pkg/endpoint"
+	grpc "user/pkg/grpc"
+	pb "user/pkg/grpc/pb"
+	service "user/pkg/service"
 )
 
 var tracer opentracinggo.Tracer
@@ -90,20 +92,22 @@ func Run() {
 	logger.Log("exit", g.Run())
 
 }
-func initHttpHandler(endpoints endpoint.Endpoints, g *group.Group) {
-	options := defaultHttpOptions(logger, tracer)
-	// Add your http options here
+func initGRPCHandler(endpoints endpoint.Endpoints, g *group.Group) {
+	options := defaultGRPCOptions(logger, tracer)
+	// Add your GRPC options here
 
-	httpHandler := http1.NewHTTPHandler(endpoints, options)
-	httpListener, err := net.Listen("tcp", *httpAddr)
+	grpcServer := grpc.NewGRPCServer(endpoints, options)
+	grpcListener, err := net.Listen("tcp", *grpcAddr)
 	if err != nil {
-		logger.Log("transport", "HTTP", "during", "Listen", "err", err)
+		logger.Log("transport", "gRPC", "during", "Listen", "err", err)
 	}
 	g.Add(func() error {
-		logger.Log("transport", "HTTP", "addr", *httpAddr)
-		return http2.Serve(httpListener, httpHandler)
+		logger.Log("transport", "gRPC", "addr", *grpcAddr)
+		baseServer := grpc1.NewServer()
+		pb.RegisterUserServer(baseServer, grpcServer)
+		return baseServer.Serve(grpcListener)
 	}, func(error) {
-		httpListener.Close()
+		grpcListener.Close()
 	})
 
 }
@@ -120,14 +124,14 @@ func getEndpointMiddleware(logger log.Logger) (mw map[string][]endpoint1.Middlew
 	return
 }
 func initMetricsEndpoint(g *group.Group) {
-	http2.DefaultServeMux.Handle("/metrics", promhttp.Handler())
+	http1.DefaultServeMux.Handle("/metrics", promhttp.Handler())
 	debugListener, err := net.Listen("tcp", *debugAddr)
 	if err != nil {
 		logger.Log("transport", "debug/HTTP", "during", "Listen", "err", err)
 	}
 	g.Add(func() error {
 		logger.Log("transport", "debug/HTTP", "addr", *debugAddr)
-		return http2.Serve(debugListener, http2.DefaultServeMux)
+		return http1.Serve(debugListener, http1.DefaultServeMux)
 	}, func(error) {
 		debugListener.Close()
 	})

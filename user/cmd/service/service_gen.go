@@ -5,27 +5,23 @@ import (
 	endpoint1 "github.com/go-kit/kit/endpoint"
 	log "github.com/go-kit/kit/log"
 	opentracing "github.com/go-kit/kit/tracing/opentracing"
-	http "github.com/go-kit/kit/transport/http"
-	endpoint "github.com/justyntemme/wp/user/pkg/endpoint"
-	http1 "github.com/justyntemme/wp/user/pkg/http"
+	grpc "github.com/go-kit/kit/transport/grpc"
 	group "github.com/oklog/oklog/pkg/group"
 	opentracinggo "github.com/opentracing/opentracing-go"
+	endpoint "user/pkg/endpoint"
 )
 
 func createService(endpoints endpoint.Endpoints) (g *group.Group) {
 	g = &group.Group{}
-	initHttpHandler(endpoints, g)
+	initGRPCHandler(endpoints, g)
 	return g
 }
-func defaultHttpOptions(logger log.Logger, tracer opentracinggo.Tracer) map[string][]http.ServerOption {
-	options := map[string][]http.ServerOption{
-		"GetUserById":    {http.ServerErrorEncoder(http1.ErrorEncoder), http.ServerErrorLogger(logger), http.ServerBefore(opentracing.HTTPToContext(tracer, "GetUserById", logger))},
-		"UpdateUserById": {http.ServerErrorEncoder(http1.ErrorEncoder), http.ServerErrorLogger(logger), http.ServerBefore(opentracing.HTTPToContext(tracer, "UpdateUserById", logger))},
-	}
+func defaultGRPCOptions(logger log.Logger, tracer opentracinggo.Tracer) map[string][]grpc.ServerOption {
+	options := map[string][]grpc.ServerOption{"GetUserById": {grpc.ServerErrorLogger(logger), grpc.ServerBefore(opentracing.GRPCToContext(tracer, "GetUserById", logger))}}
 	return options
 }
 func addEndpointMiddlewareToAllMethods(mw map[string][]endpoint1.Middleware, m endpoint1.Middleware) {
-	methods := []string{"GetUserById", "UpdateUserById"}
+	methods := []string{"GetUserById"}
 	for _, v := range methods {
 		mw[v] = append(mw[v], m)
 	}

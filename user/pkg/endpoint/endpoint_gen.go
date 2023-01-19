@@ -3,29 +3,22 @@ package endpoint
 
 import (
 	endpoint "github.com/go-kit/kit/endpoint"
-	service "github.com/justyntemme/wp/user/pkg/service"
+	service "user/pkg/service"
 )
 
 // Endpoints collects all of the endpoints that compose a profile service. It's
 // meant to be used as a helper struct, to collect all of the endpoints into a
 // single parameter.
 type Endpoints struct {
-	GetUserByIdEndpoint    endpoint.Endpoint
-	UpdateUserByIdEndpoint endpoint.Endpoint
+	GetUserByIdEndpoint endpoint.Endpoint
 }
 
 // New returns a Endpoints struct that wraps the provided service, and wires in all of the
 // expected endpoint middlewares
 func New(s service.UserService, mdw map[string][]endpoint.Middleware) Endpoints {
-	eps := Endpoints{
-		GetUserByIdEndpoint:    MakeGetUserByIdEndpoint(s),
-		UpdateUserByIdEndpoint: MakeUpdateUserByIdEndpoint(s),
-	}
+	eps := Endpoints{GetUserByIdEndpoint: MakeGetUserByIdEndpoint(s)}
 	for _, m := range mdw["GetUserById"] {
 		eps.GetUserByIdEndpoint = m(eps.GetUserByIdEndpoint)
-	}
-	for _, m := range mdw["UpdateUserById"] {
-		eps.UpdateUserByIdEndpoint = m(eps.UpdateUserByIdEndpoint)
 	}
 	return eps
 }

@@ -6,19 +6,13 @@ import "context"
 type UserService interface {
 	// Add your methods here
 	// e.x: Foo(ctx context.Context,s string)(rs string, err error)
-
 	GetUserById(ctx context.Context, s string) (rs string, err error)
-	UpdateUserById(ctx context.Context, s string) (rs string, err error)
 }
 
 type basicUserService struct{}
 
 func (b *basicUserService) GetUserById(ctx context.Context, s string) (rs string, err error) {
 	// TODO implement the business logic of GetUserById
-	return rs, err
-}
-func (b *basicUserService) UpdateUserById(ctx context.Context, s string) (rs string, err error) {
-	// TODO implement the business logic of UpdateUserById
 	return rs, err
 }
 

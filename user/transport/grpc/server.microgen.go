@@ -5,8 +5,8 @@ package transportgrpc
 
 import (
 	grpc "github.com/go-kit/kit/transport/grpc"
+	pb "github.com/justyntemme/wp/user/proto"
 	transport "github.com/justyntemme/wp/user/transport"
-	pb "github.com/justyntemme/wpin/user/proto"
 	context "golang.org/x/net/context"
 )
 

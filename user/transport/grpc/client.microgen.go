@@ -4,8 +4,8 @@ package transportgrpc
 
 import (
 	grpckit "github.com/go-kit/kit/transport/grpc"
+	pb "github.com/justyntemme/wp/user/proto"
 	transport "github.com/justyntemme/wp/user/transport"
-	pb "github.com/justyntemme/wpin/user/proto"
 	grpc "google.golang.org/grpc"
 )
 

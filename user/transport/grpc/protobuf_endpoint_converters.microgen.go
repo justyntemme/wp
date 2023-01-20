@@ -6,8 +6,8 @@ package transportgrpc
 import (
 	"context"
 	"errors"
+	pb "github.com/justyntemme/wp/user/proto"
 	transport "github.com/justyntemme/wp/user/transport"
-	pb "github.com/justyntemme/wpin/user/proto"
 )
 
 func _Encode_GetUserById_Request(ctx context.Context, request interface{}) (interface{}, error) {

@@ -1,8 +1,10 @@
 syntax = "proto3";
 package user;
 
-options go-package = "github.com/justyntemme/wp/user/protobuf;protobuf";
+option go_package = "github.com/justyntemme/wp/user/protobuf;protobuf";
 
+// @microgen grpc-server
+// @protobuf github.com/justyntemme/wp/user/protobuf
 service UserService {
 	rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
 }

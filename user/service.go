@@ -7,5 +7,5 @@ import "context"
 type UserService interface {
 	// Add your methods here
 	// e.x: Foo(ctx context.Context,s string)(rs string, err error)
-	GetUserById(ctx context.Context, s string) (rs string, err error)
+	GetUserById(ctx context.Context, id string) (result string, err error)
 }

@@ -14,5 +14,5 @@ message GetUserByIdRequest {
 }
 
 message GetUserByIdResponse {
-	string id = 1;	
+	string result = 1;
 }

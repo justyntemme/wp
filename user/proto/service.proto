@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+options go-package = "github.com/justyntemme/wp/user/protobuf;protobuf";
+
+package service.string;
+
+service UserService {
+	rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
+}
+
+message GetUserByIdRequest {
+	string id = 1;
+}
+
+message GetUserByIdResponse {
+	string id = 1;	
+}

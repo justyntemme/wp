@@ -2,7 +2,7 @@ package service
 
 import "context"
 
-// @microgen middleware, logging, grpc, http, recovering, main
+// @microgen middleware, logging, grpc, http, recovering
 // @protobuf github.com/justyntemme/wp/user/proto
 type UserService interface {
 	// Add your methods here

@@ -7,8 +7,8 @@ require (
 	github.com/gorilla/mux v1.7.3
 	go-micro.dev/v4 v4.9.0
 	golang.org/x/net v0.0.0-20210510120150-4163338589ed
-	google.golang.org/grpc v1.27.1
-	google.golang.org/protobuf v1.26.0
+	google.golang.org/grpc v1.38.0
+	google.golang.org/protobuf v1.28.1
 )
 
 require (
@@ -30,5 +30,5 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20210502180810-71e4cd670f79 // indirect
 	golang.org/x/text v0.3.6 // indirect
-	google.golang.org/genproto v0.0.0-20200305110556-506484158171 // indirect
+	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
 )

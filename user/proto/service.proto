@@ -3,7 +3,7 @@ package user;
 
 option go_package = ".;protobuf";
 
-// @microgen grpc-server
+// @microgen middleware, logging, grpc, http, recover, main, error-logging
 // @protobuf github.com/justyntemme/wp/user/proto
 service UserService {
 	rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);

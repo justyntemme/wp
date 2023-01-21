@@ -18,4 +18,5 @@ jobs:
         go-version: 1.19.x
     - name: Run go test
       run: |
-        go test -v ./${{ matrix.service }}/server/main.go
+      cd ./${{ matrix.service }}
+      go test -v ./...

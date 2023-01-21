@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image for user-server-run
-      run: docker build . --file Dockerfile --target user-server --tag user-server:$(date +%s)
+      run: docker build . --file Dockerfile --target user-server-run --tag user-server:$(date +%s)

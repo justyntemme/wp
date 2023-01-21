@@ -7,6 +7,15 @@ option go_package = ".;protobuf";
 // @protobuf github.com/justyntemme/wp/user/proto
 service UserService {
 	rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
+	rpc UnimplementedUserServiceServer(UnimplementedUserServiceServerRequest) returns (UnimplementedUserServiceServerResponse);
+}
+
+message UnimplementedUserServiceServerResponse {
+	string result = 1;
+}
+
+message UnimplementedUserServiceServerRequest {
+	string result = 1;
 }
 
 message GetUserByIdRequest {

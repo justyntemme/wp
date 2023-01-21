@@ -19,20 +19,12 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	return client
 }
 
 func Query(ctx context.Context, pipeline []bson.M) (result string, err error) {
-	// Define the aggregation pipeline
-	// pipeline := []bson.M{
-	// 	{"$match": bson.M{"Id": "A"}},
-	// 	{"$group": bson.M{"_id": "$cust_id", "total": bson.M{"$sum": "$amount"}}},
-	// 	{"$sort": bson.M{"total": -1}},
-	// }
 
 	// Get a handle to the orders collection
-	orders := client.Database("mydb").Collection("orders")
+	orders := client.Database("wp").Collection("users")
 
 	// Execute the aggregation pipeline
 	cursor, err := orders.Aggregate(context.TODO(), pipeline)

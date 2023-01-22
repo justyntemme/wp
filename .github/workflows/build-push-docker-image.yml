@@ -8,24 +8,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        service: [user, club]
+    working-directory: ${{ matrix.service }}
     steps:
     - uses: actions/checkout@v3
     - name: Extract metadata (tags, labels) for Docker
       id: meta
       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
       with:
-        images: docker.io/justyntemme/user-svc
+        images: "docker.io/justyntemme/${{ matrix.service }}-svc"
     - name: Build the Docker image
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"
-        docker build . --file Dockerfile --tag docker.io/justyntemme/user-svc:$IMAGE_TAG
+        docker build . --file Dockerfile --tag "docker.io/justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG"
     outputs:
       image_tag: ${{ steps.build.outputs.image_tag }}
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    working-directory: ${{ matrix.service }}
     needs: build
     steps:
     - name: Log in to Docker Hub
@@ -35,7 +39,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push the image
       with:
-        images: docker.io/justyntemme/user-svc
+        images: "docker.io/justyntemme/${{ matrix.service }}-svc"
       run: |
         echo "Pushing image with tag ${{ steps.build.outputs.image_tag }}"
-        docker push docker.io/justyntemme/user-svc:${{ steps.build.outputs.image_tag }}
+        docker push "docker.io/justyntemme/${{ matrix.service }}-svc:${{ steps.build.outputs.image_tag }}"

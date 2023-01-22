@@ -19,11 +19,11 @@ jobs:
       with:
         images: "docker.io/justyntemme/${{ matrix.service }}-svc"
     - name: Build the Docker image
-      working-directory: ./${{ matrix.service}}
+      # working-directory: ./${{ matrix.service }}
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"
-        docker build . --file Dockerfile --tag "docker.io/justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG"
+        docker build . --file Dockerfile --target ${{ matrix.service }} --tag "docker.io/justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG"
     outputs:
       image_tag: ${{ steps.build.outputs.image_tag }}
   push_to_registry:

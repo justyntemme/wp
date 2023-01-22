@@ -1,0 +1,18 @@
+syntax = "proto3";
+package club;
+
+option go_package = ".;protobuf";
+
+// @microgen middleware, logging, grpc, http, recover, main, error-logging
+// @protobuf github.com/justyntemme/wp/club/proto
+service ClubService {
+	rpc GetClubById(GetClubByIdRequest) returns (GetClubByIdResponse);
+}
+
+message GetClubByIdRequest {
+	string id = 1;
+}
+
+message GetClubByIdResponse {
+	string result = 1;
+}

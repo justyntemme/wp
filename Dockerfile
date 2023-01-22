@@ -1,4 +1,4 @@
-FROM golang:latest as user-server-build
+FROM golang:latest
 
 WORKDIR /go/src/github.com/justyntemme/wp
 
@@ -10,3 +10,11 @@ FROM golang:alpine as user-server-run
 COPY --from=user-server-build /go/src/github.com/justyntemme/wp/user/user-server /go/bin/user-server
 EXPOSE 8080
 ENTRYPOINT [ "/go/bin/user-erver" ]
+FROM golang:latest 
+
+WORKDIR /go/src/github.com/justyntemme/wp/club
+RUN go mod tidy
+RUN go build -o club-server server/main.go
+FROM golang:alpine as club-server-run
+COPY --from=club-server-build /go/src/github.com/justyntemme/wp/club/club-server /go/bin/club-server
+EXPOSE 8080

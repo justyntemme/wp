@@ -11,6 +11,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      with:
+        images: docker.io/justyntemme/user-svc
     - name: Build the Docker image
       run: |
         IMAGE_TAG=$(date +%s)
@@ -29,6 +34,8 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push the image
+      with:
+        images: docker.io/justyntemme/user-svc
       run: |
         echo "Pushing image with tag ${{ steps.build.outputs.image_tag }}"
         docker push docker.io/justyntemme/user-svc:${{ steps.build.outputs.image_tag }}

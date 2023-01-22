@@ -12,7 +12,7 @@ EXPOSE 8080
 ENTRYPOINT [ "/go/bin/user-erver" ]
 
 FROM builder as club-server-build
-WORKDIR /go/src/github.com/justyntemme/wp/club
+WORKDIR /go/src/github.com/justyntemme/wp/club/club-server
 RUN go mod tidy
 RUN go build -o club-server server/main.go
 

@@ -19,7 +19,7 @@ jobs:
       with:
         images: "docker.io/justyntemme/${{ matrix.service }}-svc"
     - name: Build the Docker image
-      working-directory: ./{{ matrix.service}}
+      working-directory: ./${{ matrix.service}}
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"

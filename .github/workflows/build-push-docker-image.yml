@@ -32,4 +32,4 @@ jobs:
       
       - name: Push the image
         run: |
-          docker push docker.io/justyntemme/wp-svc:$(date +%s)
+          docker push justyntemme/wp-svc:$(date +%s)

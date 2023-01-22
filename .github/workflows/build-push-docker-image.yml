@@ -11,6 +11,9 @@ jobs:
     strategy:
       matrix:
         service: [user, club]
+    defaults:
+      run:
+        working-directory: ./{{ matrix.service}}
     steps:
     - uses: actions/checkout@v3
     - name: Extract metadata (tags, labels) for Docker
@@ -19,9 +22,6 @@ jobs:
       with:
         images: "docker.io/justyntemme/${{ matrix.service }}-svc"
     - name: Build the Docker image
-      uses: actions/setup-node@v2
-      with:
-        working-directory: ./${{ matrix.service }}
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"

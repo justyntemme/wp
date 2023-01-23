@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [user, club]
+        service: [user, club, vote]
     steps:
     - uses: actions/checkout@v3
     - name: Extract metadata (tags, labels) for Docker

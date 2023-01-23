@@ -9,7 +9,7 @@ require (
 	go-micro.dev/v4 v4.9.0
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-	google.golang.org/grpc v1.27.1
+	google.golang.org/grpc v1.32.0
 	google.golang.org/protobuf v1.28.1
 )
 

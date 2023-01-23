@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	dal "github.com/justyntemme/wp/dal"
+	"github.com/justyntemme/wp/dal"
 )
 
 // @microgen middleware, logging, grpc, http, recovering
@@ -27,13 +27,12 @@ func GetVoteById(ctx context.Context, id string) (result string, err error) {
 	// 	// {"$sort": bson.M{"total": -1}},
 	// }
 	//
-	dal.Query(ctx, nil)
 
 	return "GetVoteByID function has been called", nil
 }
 
 func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
-	result, err = dal.GetVotesByClubId(id)
+	result, err = dal.GetVotesByClubId()
 
 	// result, err = dal.GetVotesByClubId(id)
 

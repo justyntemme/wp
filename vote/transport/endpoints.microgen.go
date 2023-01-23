@@ -12,5 +12,7 @@ type ManyToManyStreamEndpoint func(stream interface{}) error
 type ManyToOneStreamEndpoint func(stream interface{}) error
 
 type EndpointsSet struct {
-	GetVoteByIdEndpoint endpoint.Endpoint
+	GetVoteByIdEndpoint      endpoint.Endpoint
+	GetVotesByUserIdEndpoint endpoint.Endpoint
+	GetVotesByClubIdEndpoint endpoint.Endpoint
 }

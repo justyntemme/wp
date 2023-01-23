@@ -247,8 +247,6 @@ github.com/jstemmer/go-junit-report v0.0.0-20190106144839-af01ea7f8024/go.mod h1
 github.com/jstemmer/go-junit-report v0.9.1/go.mod h1:Brl9GWCQeLvo8nXZwPNNblvFj/XSXhF0NWZEnDohbsk=
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
-github.com/justyntemme/wp/club v0.0.0-20230123170305-8e9b6a86676c h1:4ip7NjKa6zFxPbsDvCnlQsLcJZnD3ZdghDi5LbJjYSw=
-github.com/justyntemme/wp/club v0.0.0-20230123170305-8e9b6a86676c/go.mod h1:YeqAyQXaxZwYCZBxVpYOoN0gJCbipPh47IGZFJhRNuE=
 github.com/justyntemme/wp/dal v0.0.0-20230123165838-e0127a39bbc7 h1:knj9dz6u0dZpCz9Eby/HuuMhWSmvXy70TsvWEJM7fuw=
 github.com/justyntemme/wp/dal v0.0.0-20230123165838-e0127a39bbc7/go.mod h1:Q9b1TiMFWriCElGujUilnHSFwbXrTIGRpAuevD5PO1c=
 github.com/k0kubun/go-ansi v0.0.0-20180517002512-3bf9e2903213/go.mod h1:vNUNkEQ1e29fT/6vq2aBdFsgNPmy8qMdSay1npru+Sw=

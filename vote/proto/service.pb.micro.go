@@ -37,6 +37,8 @@ func NewVoteServiceEndpoints() []*api.Endpoint {
 
 type VoteService interface {
 	GetVoteById(ctx context.Context, in *GetVoteByIdRequest, opts ...client.CallOption) (*GetVoteByIdResponse, error)
+	GetVotesByClubId(ctx context.Context, in *GetVotesByClubIdRequest, opts ...client.CallOption) (*GetVotesByClubIdResponse, error)
+	GetVotesByUserId(ctx context.Context, in *GetVotesByUserIdRequest, opts ...client.CallOption) (*GetVotesByUserIdResponse, error)
 }
 
 type voteService struct {
@@ -61,15 +63,39 @@ func (c *voteService) GetVoteById(ctx context.Context, in *GetVoteByIdRequest, o
 	return out, nil
 }
 
+func (c *voteService) GetVotesByClubId(ctx context.Context, in *GetVotesByClubIdRequest, opts ...client.CallOption) (*GetVotesByClubIdResponse, error) {
+	req := c.c.NewRequest(c.name, "VoteService.GetVotesByClubId", in)
+	out := new(GetVotesByClubIdResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *voteService) GetVotesByUserId(ctx context.Context, in *GetVotesByUserIdRequest, opts ...client.CallOption) (*GetVotesByUserIdResponse, error) {
+	req := c.c.NewRequest(c.name, "VoteService.GetVotesByUserId", in)
+	out := new(GetVotesByUserIdResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for VoteService service
 
 type VoteServiceHandler interface {
 	GetVoteById(context.Context, *GetVoteByIdRequest, *GetVoteByIdResponse) error
+	GetVotesByClubId(context.Context, *GetVotesByClubIdRequest, *GetVotesByClubIdResponse) error
+	GetVotesByUserId(context.Context, *GetVotesByUserIdRequest, *GetVotesByUserIdResponse) error
 }
 
 func RegisterVoteServiceHandler(s server.Server, hdlr VoteServiceHandler, opts ...server.HandlerOption) error {
 	type voteService interface {
 		GetVoteById(ctx context.Context, in *GetVoteByIdRequest, out *GetVoteByIdResponse) error
+		GetVotesByClubId(ctx context.Context, in *GetVotesByClubIdRequest, out *GetVotesByClubIdResponse) error
+		GetVotesByUserId(ctx context.Context, in *GetVotesByUserIdRequest, out *GetVotesByUserIdResponse) error
 	}
 	type VoteService struct {
 		voteService
@@ -84,4 +110,12 @@ type voteServiceHandler struct {
 
 func (h *voteServiceHandler) GetVoteById(ctx context.Context, in *GetVoteByIdRequest, out *GetVoteByIdResponse) error {
 	return h.VoteServiceHandler.GetVoteById(ctx, in, out)
+}
+
+func (h *voteServiceHandler) GetVotesByClubId(ctx context.Context, in *GetVotesByClubIdRequest, out *GetVotesByClubIdResponse) error {
+	return h.VoteServiceHandler.GetVotesByClubId(ctx, in, out)
+}
+
+func (h *voteServiceHandler) GetVotesByUserId(ctx context.Context, in *GetVotesByUserIdRequest, out *GetVotesByUserIdResponse) error {
+	return h.VoteServiceHandler.GetVotesByUserId(ctx, in, out)
 }

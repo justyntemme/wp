@@ -9,10 +9,24 @@ import (
 )
 
 func NewHTTPClient(u *url.URL, opts ...httpkit.ClientOption) transport.EndpointsSet {
-	return transport.EndpointsSet{GetVoteByIdEndpoint: httpkit.NewClient(
-		"POST", u,
-		_Encode_GetVoteById_Request,
-		_Decode_GetVoteById_Response,
-		opts...,
-	).Endpoint()}
+	return transport.EndpointsSet{
+		GetVoteByIdEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetVoteById_Request,
+			_Decode_GetVoteById_Response,
+			opts...,
+		).Endpoint(),
+		GetVotesByClubIdEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetVotesByClubId_Request,
+			_Decode_GetVotesByClubId_Response,
+			opts...,
+		).Endpoint(),
+		GetVotesByUserIdEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetVotesByUserId_Request,
+			_Decode_GetVotesByUserId_Response,
+			opts...,
+		).Endpoint(),
+	}
 }

@@ -18,12 +18,44 @@ func _Encode_GetVoteById_Request(ctx context.Context, request interface{}) (inte
 	return &pb.GetVoteByIdRequest{Id: req.Id}, nil
 }
 
+func _Encode_GetVotesByUserId_Request(ctx context.Context, request interface{}) (interface{}, error) {
+	if request == nil {
+		return nil, errors.New("nil GetVotesByUserIdRequest")
+	}
+	req := request.(*transport.GetVotesByUserIdRequest)
+	return &pb.GetVotesByUserIdRequest{Id: req.Id}, nil
+}
+
+func _Encode_GetVotesByClubId_Request(ctx context.Context, request interface{}) (interface{}, error) {
+	if request == nil {
+		return nil, errors.New("nil GetVotesByClubIdRequest")
+	}
+	req := request.(*transport.GetVotesByClubIdRequest)
+	return &pb.GetVotesByClubIdRequest{Id: req.Id}, nil
+}
+
 func _Encode_GetVoteById_Response(ctx context.Context, response interface{}) (interface{}, error) {
 	if response == nil {
 		return nil, errors.New("nil GetVoteByIdResponse")
 	}
 	resp := response.(*transport.GetVoteByIdResponse)
 	return &pb.GetVoteByIdResponse{Result: resp.Result}, nil
+}
+
+func _Encode_GetVotesByUserId_Response(ctx context.Context, response interface{}) (interface{}, error) {
+	if response == nil {
+		return nil, errors.New("nil GetVotesByUserIdResponse")
+	}
+	resp := response.(*transport.GetVotesByUserIdResponse)
+	return &pb.GetVotesByUserIdResponse{Result: resp.Result}, nil
+}
+
+func _Encode_GetVotesByClubId_Response(ctx context.Context, response interface{}) (interface{}, error) {
+	if response == nil {
+		return nil, errors.New("nil GetVotesByClubIdResponse")
+	}
+	resp := response.(*transport.GetVotesByClubIdResponse)
+	return &pb.GetVotesByClubIdResponse{Result: resp.Result}, nil
 }
 
 func _Decode_GetVoteById_Request(ctx context.Context, request interface{}) (interface{}, error) {
@@ -34,10 +66,42 @@ func _Decode_GetVoteById_Request(ctx context.Context, request interface{}) (inte
 	return &transport.GetVoteByIdRequest{Id: string(req.Id)}, nil
 }
 
+func _Decode_GetVotesByUserId_Request(ctx context.Context, request interface{}) (interface{}, error) {
+	if request == nil {
+		return nil, errors.New("nil GetVotesByUserIdRequest")
+	}
+	req := request.(*pb.GetVotesByUserIdRequest)
+	return &transport.GetVotesByUserIdRequest{Id: string(req.Id)}, nil
+}
+
+func _Decode_GetVotesByClubId_Request(ctx context.Context, request interface{}) (interface{}, error) {
+	if request == nil {
+		return nil, errors.New("nil GetVotesByClubIdRequest")
+	}
+	req := request.(*pb.GetVotesByClubIdRequest)
+	return &transport.GetVotesByClubIdRequest{Id: string(req.Id)}, nil
+}
+
 func _Decode_GetVoteById_Response(ctx context.Context, response interface{}) (interface{}, error) {
 	if response == nil {
 		return nil, errors.New("nil GetVoteByIdResponse")
 	}
 	resp := response.(*pb.GetVoteByIdResponse)
 	return &transport.GetVoteByIdResponse{Result: string(resp.Result)}, nil
+}
+
+func _Decode_GetVotesByUserId_Response(ctx context.Context, response interface{}) (interface{}, error) {
+	if response == nil {
+		return nil, errors.New("nil GetVotesByUserIdResponse")
+	}
+	resp := response.(*pb.GetVotesByUserIdResponse)
+	return &transport.GetVotesByUserIdResponse{Result: string(resp.Result)}, nil
+}
+
+func _Decode_GetVotesByClubId_Response(ctx context.Context, response interface{}) (interface{}, error) {
+	if response == nil {
+		return nil, errors.New("nil GetVotesByClubIdResponse")
+	}
+	resp := response.(*pb.GetVotesByClubIdResponse)
+	return &transport.GetVotesByClubIdResponse{Result: string(resp.Result)}, nil
 }

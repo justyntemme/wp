@@ -21,3 +21,13 @@ FROM golang:alpine as club-server-run
 COPY --from=club-server-build /go/src/github.com/justyntemme/wp/club/club-server /go/bin/club-server
 EXPOSE 8080
 ENTRYPOINT [ "/go/bin/club-server" ]
+
+FROM builder as vote-server-build
+WORKDIR /go/src/github.com/justyntemme/wp/vote
+RUN go mod tidy
+RUN go build -o club-server server/main.go
+
+FROM golang:alpine as vote-server-run
+COPY --from=club-server-build /go/src/github.com/justyntemme/wp/club/vote-server /go/bin/vote-server
+EXPOSE 8080
+ENTRYPOINT [ "/go/bin/club-server" ]

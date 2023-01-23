@@ -2,10 +2,8 @@ package service
 
 import (
 	"context"
-	"log"
 
 	dal "github.com/justyntemme/wp/dal"
-	"gopkg.in/mgo.v2/bson"
 )
 
 // @microgen middleware, logging, grpc, http, recovering
@@ -35,24 +33,14 @@ func GetVoteById(ctx context.Context, id string) (result string, err error) {
 }
 
 func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
-
 	result, err = dal.GetVotesByClubId(id)
 
-	return result, err
+	// result, err = dal.GetVotesByClubId(id)
+
+	return "", nil
 }
 
 func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
 
-	//TODO create helper functions for bson.M and never use bson.M directly
-	pipeline := []bson.M{
-		{"$match": bson.M{"cuid": bson.M{"$in": []string{id}}}},
-		{"$project": bson.M{"_id": 0, "uuid": 1}},
-	}
-
-	response, err := dal.Query(ctx, pipeline)
-	if err != nil {
-		log.Println(err)
-	}
-
-	return response, err
+	return "response", err
 }

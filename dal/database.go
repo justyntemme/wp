@@ -50,6 +50,6 @@ func GetVotesByClubId(ctx context.Context, id string) (result string, err error)
 	match := bson.D{"$match",
 		bson.E{"uuid", id}}
 
-	return Query(ctx, match)
+	return query(ctx, match)
 
 }

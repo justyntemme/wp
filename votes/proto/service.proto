@@ -1,0 +1,18 @@
+syntax = "proto3";
+package vote;
+
+option go_package = ".;protobuf";
+
+// @microgen middleware, logging, grpc, http, recover, main, error-logging
+// @protobuf github.com/justyntemme/wp/vote/proto
+service VoteService {
+	rpc GetVoteById(GetVoteByIdRequest) returns (GetVoteByIdResponse);
+}
+
+message GetVoteByIdRequest {
+	string id = 1;
+}
+
+message GetVoteByIdResponse {
+	string result = 1;
+}

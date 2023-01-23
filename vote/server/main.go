@@ -11,14 +11,14 @@ import (
 	"os/signal"
 	"syscall"
 
-	club "github.com/justyntemme/wp/club"
+	vote "github.com/justyntemme/wp/vote"
 
 	log "github.com/go-kit/kit/log"
-	protobuf "github.com/justyntemme/wp/club/proto"
-	service "github.com/justyntemme/wp/club/service"
-	transport "github.com/justyntemme/wp/club/transport"
-	grpc "github.com/justyntemme/wp/club/transport/grpc"
-	http "github.com/justyntemme/wp/club/transport/http"
+	protobuf "github.com/justyntemme/wp/vote/proto"
+	service "github.com/justyntemme/wp/vote/service"
+	transport "github.com/justyntemme/wp/vote/transport"
+	grpc "github.com/justyntemme/wp/vote/transport/grpc"
+	http "github.com/justyntemme/wp/vote/transport/http"
 
 	errgroup "golang.org/x/sync/errgroup"
 	grpc1 "google.golang.org/grpc"
@@ -34,9 +34,9 @@ func main() {
 	g.Go(func() error {
 		return InterruptHandler(ctx)
 	})
-	var svc club.ClubService
+	var svc vote.VoteService
 
-	//protobuf.NewClubService("Club Service", nil) // TODO: = service.NewClubService () // Create new service.
+	//protobuf.NewVoteService("Vote Service", nil) // TODO: = service.NewVoteService () // Create new service.
 	svc = service.LoggingMiddleware(logger)(svc) // Setup service logging.
 	//svc = service.ErrorLoggingMiddleware(logger)(svc)    // Setup error logging.
 	svc = service.RecoveringMiddleware(errorLogger)(svc) // Setup service recovering.
@@ -92,7 +92,7 @@ func ServeGRPC(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 	//opentracinggo.NoopTracer{}, // TODO: Add tracer
 
 	grpcServer := grpc1.NewServer()
-	protobuf.RegisterClubServiceServer(grpcServer, server)
+	protobuf.RegisterVoteServiceServer(grpcServer, server)
 	logger.Log("listen on", addr)
 	ch := make(chan error)
 	go func() {

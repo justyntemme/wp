@@ -7,6 +7,25 @@ option go_package = ".;protobuf";
 // @protobuf github.com/justyntemme/wp/vote/proto
 service VoteService {
 	rpc GetVoteById(GetVoteByIdRequest) returns (GetVoteByIdResponse);
+	rpc GetVoteByClubId(GetVoteByClubIdRequest) returns (GetVoteByClubIdResponse);
+	rpc GetVoteByUserId(GetVoteByUserIdRequest) returns (GetVoteByUserIdResponse);
+}
+
+message GetVoteByClubIdRequest {
+	string id = 1;
+}
+
+message GetVoteByClubIdResponse {
+	string result = 1;
+}
+
+
+message GetVoteByUserIdRequest {
+	string id = 1;
+}
+
+message GetVoteByUserIdResponse {
+	string result = 1;
 }
 
 message GetVoteByIdRequest {

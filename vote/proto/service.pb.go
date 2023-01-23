@@ -20,6 +20,194 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GetVoteByClubIdRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *GetVoteByClubIdRequest) Reset() {
+	*x = GetVoteByClubIdRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetVoteByClubIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVoteByClubIdRequest) ProtoMessage() {}
+
+func (x *GetVoteByClubIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVoteByClubIdRequest.ProtoReflect.Descriptor instead.
+func (*GetVoteByClubIdRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetVoteByClubIdRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetVoteByClubIdResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *GetVoteByClubIdResponse) Reset() {
+	*x = GetVoteByClubIdResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetVoteByClubIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVoteByClubIdResponse) ProtoMessage() {}
+
+func (x *GetVoteByClubIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVoteByClubIdResponse.ProtoReflect.Descriptor instead.
+func (*GetVoteByClubIdResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetVoteByClubIdResponse) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
+type GetVoteByUserIdRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *GetVoteByUserIdRequest) Reset() {
+	*x = GetVoteByUserIdRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetVoteByUserIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVoteByUserIdRequest) ProtoMessage() {}
+
+func (x *GetVoteByUserIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVoteByUserIdRequest.ProtoReflect.Descriptor instead.
+func (*GetVoteByUserIdRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetVoteByUserIdRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetVoteByUserIdResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *GetVoteByUserIdResponse) Reset() {
+	*x = GetVoteByUserIdResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetVoteByUserIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVoteByUserIdResponse) ProtoMessage() {}
+
+func (x *GetVoteByUserIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVoteByUserIdResponse.ProtoReflect.Descriptor instead.
+func (*GetVoteByUserIdResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetVoteByUserIdResponse) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
 type GetVoteByIdRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -31,7 +219,7 @@ type GetVoteByIdRequest struct {
 func (x *GetVoteByIdRequest) Reset() {
 	*x = GetVoteByIdRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[0]
+		mi := &file_service_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +232,7 @@ func (x *GetVoteByIdRequest) String() string {
 func (*GetVoteByIdRequest) ProtoMessage() {}
 
 func (x *GetVoteByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[0]
+	mi := &file_service_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +245,7 @@ func (x *GetVoteByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVoteByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetVoteByIdRequest) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{0}
+	return file_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetVoteByIdRequest) GetId() string {
@@ -78,7 +266,7 @@ type GetVoteByIdResponse struct {
 func (x *GetVoteByIdResponse) Reset() {
 	*x = GetVoteByIdResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_service_proto_msgTypes[1]
+		mi := &file_service_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -91,7 +279,7 @@ func (x *GetVoteByIdResponse) String() string {
 func (*GetVoteByIdResponse) ProtoMessage() {}
 
 func (x *GetVoteByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_service_proto_msgTypes[1]
+	mi := &file_service_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -104,7 +292,7 @@ func (x *GetVoteByIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVoteByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetVoteByIdResponse) Descriptor() ([]byte, []int) {
-	return file_service_proto_rawDescGZIP(), []int{1}
+	return file_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetVoteByIdResponse) GetResult() string {
@@ -118,19 +306,40 @@ var File_service_proto protoreflect.FileDescriptor
 
 var file_service_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
-	0x04, 0x76, 0x6f, 0x74, 0x65, 0x22, 0x24, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65,
-	0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x2d, 0x0a, 0x13, 0x47,
-	0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0x51, 0x0a, 0x0b, 0x56, 0x6f,
-	0x74, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x0b, 0x47, 0x65, 0x74,
-	0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x49, 0x64, 0x12, 0x18, 0x2e, 0x76, 0x6f, 0x74, 0x65, 0x2e,
-	0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x19, 0x2e, 0x76, 0x6f, 0x74, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74,
-	0x65, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0c, 0x5a,
-	0x0a, 0x2e, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x04, 0x76, 0x6f, 0x74, 0x65, 0x22, 0x28, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65,
+	0x42, 0x79, 0x43, 0x6c, 0x75, 0x62, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22,
+	0x31, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x43, 0x6c, 0x75, 0x62,
+	0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65,
+	0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75,
+	0x6c, 0x74, 0x22, 0x28, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x55,
+	0x73, 0x65, 0x72, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x31, 0x0a, 0x17,
+	0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c,
+	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22,
+	0x24, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x2d, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65,
+	0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06,
+	0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65,
+	0x73, 0x75, 0x6c, 0x74, 0x32, 0xf1, 0x01, 0x0a, 0x0b, 0x56, 0x6f, 0x74, 0x65, 0x53, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42,
+	0x79, 0x49, 0x64, 0x12, 0x18, 0x2e, 0x76, 0x6f, 0x74, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f,
+	0x74, 0x65, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e,
+	0x76, 0x6f, 0x74, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x49, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4e, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x56,
+	0x6f, 0x74, 0x65, 0x42, 0x79, 0x43, 0x6c, 0x75, 0x62, 0x49, 0x64, 0x12, 0x1c, 0x2e, 0x76, 0x6f,
+	0x74, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x43, 0x6c, 0x75, 0x62,
+	0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x76, 0x6f, 0x74, 0x65,
+	0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x43, 0x6c, 0x75, 0x62, 0x49, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4e, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x56,
+	0x6f, 0x74, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1c, 0x2e, 0x76, 0x6f,
+	0x74, 0x65, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65, 0x72,
+	0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x76, 0x6f, 0x74, 0x65,
+	0x2e, 0x47, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0c, 0x5a, 0x0a, 0x2e, 0x3b, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -145,16 +354,24 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_service_proto_goTypes = []interface{}{
-	(*GetVoteByIdRequest)(nil),  // 0: vote.GetVoteByIdRequest
-	(*GetVoteByIdResponse)(nil), // 1: vote.GetVoteByIdResponse
+	(*GetVoteByClubIdRequest)(nil),  // 0: vote.GetVoteByClubIdRequest
+	(*GetVoteByClubIdResponse)(nil), // 1: vote.GetVoteByClubIdResponse
+	(*GetVoteByUserIdRequest)(nil),  // 2: vote.GetVoteByUserIdRequest
+	(*GetVoteByUserIdResponse)(nil), // 3: vote.GetVoteByUserIdResponse
+	(*GetVoteByIdRequest)(nil),      // 4: vote.GetVoteByIdRequest
+	(*GetVoteByIdResponse)(nil),     // 5: vote.GetVoteByIdResponse
 }
 var file_service_proto_depIdxs = []int32{
-	0, // 0: vote.VoteService.GetVoteById:input_type -> vote.GetVoteByIdRequest
-	1, // 1: vote.VoteService.GetVoteById:output_type -> vote.GetVoteByIdResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	4, // 0: vote.VoteService.GetVoteById:input_type -> vote.GetVoteByIdRequest
+	0, // 1: vote.VoteService.GetVoteByClubId:input_type -> vote.GetVoteByClubIdRequest
+	2, // 2: vote.VoteService.GetVoteByUserId:input_type -> vote.GetVoteByUserIdRequest
+	5, // 3: vote.VoteService.GetVoteById:output_type -> vote.GetVoteByIdResponse
+	1, // 4: vote.VoteService.GetVoteByClubId:output_type -> vote.GetVoteByClubIdResponse
+	3, // 5: vote.VoteService.GetVoteByUserId:output_type -> vote.GetVoteByUserIdResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -167,7 +384,7 @@ func file_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetVoteByIdRequest); i {
+			switch v := v.(*GetVoteByClubIdRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -179,6 +396,54 @@ func file_service_proto_init() {
 			}
 		}
 		file_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetVoteByClubIdResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetVoteByUserIdRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetVoteByUserIdResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetVoteByIdRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetVoteByIdResponse); i {
 			case 0:
 				return &v.state
@@ -197,7 +462,7 @@ func file_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

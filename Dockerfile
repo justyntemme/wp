@@ -28,6 +28,6 @@ RUN go mod tidy
 RUN go build -o vote-server server/main.go
 
 FROM golang:alpine as vote-server-run
-COPY --from=club-server-build /go/src/github.com/justyntemme/wp/vote/vote-server /go/bin/vote-server
+COPY --from=vote-server-build /go/src/github.com/justyntemme/wp/vote/vote-server /go/bin/vote-server
 EXPOSE 8080
 ENTRYPOINT [ "/go/bin/club-server" ]

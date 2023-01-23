@@ -1,0 +1,14 @@
+@startuml
+namespace service {
+    interface ClubService  {
+        + GetClubById(ctx context.Context, id string) (string, error)
+
+    }
+    interface UserService  {
+        + GetUserById(ctx context.Context, id string) (string, error)
+
+    }
+}
+
+
+@enduml

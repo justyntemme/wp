@@ -15,13 +15,13 @@ var client *mongo.Client
 func init() {
 	// Connect to MongoDB
 	var err error
-	client, err = mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err = mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://jupiter:27017"))
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func Query(ctx context.Context, pipeline []bson.M) (result string, err error) {
+func Query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 
 	// Get a handle to the orders collection
 	orders := client.Database("wp").Collection("users")
@@ -42,4 +42,14 @@ func Query(ctx context.Context, pipeline []bson.M) (result string, err error) {
 		fmt.Println(result)
 	}
 	return result, err
+}
+
+func GetVotesByClubId(ctx context, id string) {
+
+	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
+	pipeline := `[
+		{"$match": { "color": "` + id + `" }}]`
+
+	Query(ctx, pipeline)
+
 }

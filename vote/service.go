@@ -36,18 +36,9 @@ func GetVoteById(ctx context.Context, id string) (result string, err error) {
 
 func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
 
-	//TODO create helper functions for bson.M and never use bson.M directly
-	pipeline := []bson.M{
-		{"$match": bson.M{"uuid": bson.M{"$in": []string{id}}}},
-		{"$project": bson.M{"_id": 0, "cuid": 1}},
-	}
+	result, err = dal.GetVotesByClubId(id)
 
-	response, err := dal.Query(ctx, pipeline)
-	if err != nil {
-		log.Println(err)
-	}
-
-	return response, err
+	return result, err
 }
 
 func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {

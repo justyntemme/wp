@@ -37,11 +37,49 @@ func (M loggingMiddleware) GetVoteById(arg0 context.Context, arg1 string) (res0 
 	return M.next.GetVoteById(arg0, arg1)
 }
 
+func (M loggingMiddleware) GetVotesByUserId(arg0 context.Context, arg1 string) (res0 string, res1 error) {
+	defer func(begin time.Time) {
+		M.logger.Log(
+			"method", "GetVotesByUserId",
+			"message", "GetVotesByUserId called",
+			"request", logGetVotesByUserIdRequest{Id: arg1},
+			"response", logGetVotesByUserIdResponse{Result: res0},
+			"err", res1,
+			"took", time.Since(begin))
+	}(time.Now())
+	return M.next.GetVotesByUserId(arg0, arg1)
+}
+
+func (M loggingMiddleware) GetVotesByClubId(arg0 context.Context, arg1 string) (res0 string, res1 error) {
+	defer func(begin time.Time) {
+		M.logger.Log(
+			"method", "GetVotesByClubId",
+			"message", "GetVotesByClubId called",
+			"request", logGetVotesByClubIdRequest{Id: arg1},
+			"response", logGetVotesByClubIdResponse{Result: res0},
+			"err", res1,
+			"took", time.Since(begin))
+	}(time.Now())
+	return M.next.GetVotesByClubId(arg0, arg1)
+}
+
 type (
 	logGetVoteByIdRequest struct {
 		Id string
 	}
 	logGetVoteByIdResponse struct {
+		Result string
+	}
+	logGetVotesByUserIdRequest struct {
+		Id string
+	}
+	logGetVotesByUserIdResponse struct {
+		Result string
+	}
+	logGetVotesByClubIdRequest struct {
+		Id string
+	}
+	logGetVotesByClubIdResponse struct {
 		Result string
 	}
 )

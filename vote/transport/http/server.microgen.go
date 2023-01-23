@@ -17,5 +17,17 @@ func NewHTTPHandler(endpoints *transport.EndpointsSet, opts ...http.ServerOption
 			_Decode_GetVoteById_Request,
 			_Encode_GetVoteById_Response,
 			opts...))
+	mux.Methods("POST").Path("/get-votes-byuser-id").Handler(
+		http.NewServer(
+			endpoints.GetVotesByUserIdEndpoint,
+			_Decode_GetVotesByUserId_Request,
+			_Encode_GetVotesByUserId_Response,
+			opts...))
+	mux.Methods("POST").Path("/get-votes-byclub-id").Handler(
+		http.NewServer(
+			endpoints.GetVotesByClubIdEndpoint,
+			_Decode_GetVotesByClubId_Request,
+			_Encode_GetVotesByClubId_Response,
+			opts...))
 	return mux
 }

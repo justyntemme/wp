@@ -20,3 +20,27 @@ func (set EndpointsSet) GetVoteById(arg0 context.Context, arg1 string) (res0 str
 	}
 	return response.(*GetVoteByIdResponse).Result, res1
 }
+
+func (set EndpointsSet) GetVotesByUserId(arg0 context.Context, arg1 string) (res0 string, res1 error) {
+	request := GetVotesByUserIdRequest{Id: arg1}
+	response, res1 := set.GetVotesByUserIdEndpoint(arg0, &request)
+	if res1 != nil {
+		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {
+			res1 = errors.New(e.Message())
+		}
+		return
+	}
+	return response.(*GetVotesByUserIdResponse).Result, res1
+}
+
+func (set EndpointsSet) GetVotesByClubId(arg0 context.Context, arg1 string) (res0 string, res1 error) {
+	request := GetVotesByClubIdRequest{Id: arg1}
+	response, res1 := set.GetVotesByClubIdEndpoint(arg0, &request)
+	if res1 != nil {
+		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {
+			res1 = errors.New(e.Message())
+		}
+		return
+	}
+	return response.(*GetVotesByClubIdResponse).Result, res1
+}

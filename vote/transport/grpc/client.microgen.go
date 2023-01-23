@@ -10,11 +10,27 @@ import (
 )
 
 func NewGRPCClient(conn *grpc.ClientConn, addr string, opts ...grpckit.ClientOption) transport.EndpointsSet {
-	return transport.EndpointsSet{GetVoteByIdEndpoint: grpckit.NewClient(
-		conn, addr, "GetVoteById",
-		_Encode_GetVoteById_Request,
-		_Decode_GetVoteById_Response,
-		pb.GetVoteByIdResponse{},
-		opts...,
-	).Endpoint()}
+	return transport.EndpointsSet{
+		GetVoteByIdEndpoint: grpckit.NewClient(
+			conn, addr, "GetVoteById",
+			_Encode_GetVoteById_Request,
+			_Decode_GetVoteById_Response,
+			pb.GetVoteByIdResponse{},
+			opts...,
+		).Endpoint(),
+		GetVotesByClubIdEndpoint: grpckit.NewClient(
+			conn, addr, "GetVotesByClubId",
+			_Encode_GetVotesByClubId_Request,
+			_Decode_GetVotesByClubId_Response,
+			pb.GetVotesByClubIdResponse{},
+			opts...,
+		).Endpoint(),
+		GetVotesByUserIdEndpoint: grpckit.NewClient(
+			conn, addr, "GetVotesByUserId",
+			_Encode_GetVotesByUserId_Request,
+			_Decode_GetVotesByUserId_Response,
+			pb.GetVotesByUserIdResponse{},
+			opts...,
+		).Endpoint(),
+	}
 }

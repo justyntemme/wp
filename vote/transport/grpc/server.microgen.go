@@ -12,16 +12,32 @@ import (
 
 type voteServiceServer struct {
 	pb.UnimplementedVoteServiceServer
-	getVoteById grpc.Handler
+	getVoteById      grpc.Handler
+	getVotesByUserId grpc.Handler
+	getVotesByClubId grpc.Handler
 }
 
 func NewGRPCServer(endpoints *transport.EndpointsSet, opts ...grpc.ServerOption) pb.VoteServiceServer {
-	return &voteServiceServer{getVoteById: grpc.NewServer(
-		endpoints.GetVoteByIdEndpoint,
-		_Decode_GetVoteById_Request,
-		_Encode_GetVoteById_Response,
-		opts...,
-	)}
+	return &voteServiceServer{
+		getVoteById: grpc.NewServer(
+			endpoints.GetVoteByIdEndpoint,
+			_Decode_GetVoteById_Request,
+			_Encode_GetVoteById_Response,
+			opts...,
+		),
+		getVotesByClubId: grpc.NewServer(
+			endpoints.GetVotesByClubIdEndpoint,
+			_Decode_GetVotesByClubId_Request,
+			_Encode_GetVotesByClubId_Response,
+			opts...,
+		),
+		getVotesByUserId: grpc.NewServer(
+			endpoints.GetVotesByUserIdEndpoint,
+			_Decode_GetVotesByUserId_Request,
+			_Encode_GetVotesByUserId_Response,
+			opts...,
+		),
+	}
 }
 
 func newOneToManyStreamServer(endpoint transport.OneToManyStreamEndpoint) transport.OneToManyStreamEndpoint {
@@ -42,4 +58,20 @@ func (S *voteServiceServer) GetVoteById(ctx context.Context, req *pb.GetVoteById
 		return nil, err
 	}
 	return resp.(*pb.GetVoteByIdResponse), nil
+}
+
+func (S *voteServiceServer) GetVotesByUserId(ctx context.Context, req *pb.GetVotesByUserIdRequest) (*pb.GetVotesByUserIdResponse, error) {
+	_, resp, err := S.getVotesByUserId.ServeGRPC(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	return resp.(*pb.GetVotesByUserIdResponse), nil
+}
+
+func (S *voteServiceServer) GetVotesByClubId(ctx context.Context, req *pb.GetVotesByClubIdRequest) (*pb.GetVotesByClubIdResponse, error) {
+	_, resp, err := S.getVotesByClubId.ServeGRPC(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	return resp.(*pb.GetVotesByClubIdResponse), nil
 }

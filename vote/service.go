@@ -12,6 +12,8 @@ type VoteService interface {
 	// Add your methods here
 	// e.x: Foo(ctx context.Context,s string)(rs string, err error)
 	GetVoteById(ctx context.Context, id string) (result string, err error)
+	GetVotesByUserId(ctx context.Context, id string) (result string, err error)
+	GetVotesByClubId(ctx context.Context, id string) (result string, err error)
 }
 
 func GetVoteById(ctx context.Context, id string) (result string, err error) {
@@ -25,6 +27,20 @@ func GetVoteById(ctx context.Context, id string) (result string, err error) {
 	// 	// {"$sort": bson.M{"total": -1}},
 	// }
 	//
+	dal.Query(ctx, nil)
+
+	return "GetVoteByID function has been called", nil
+}
+
+func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
+
+	dal.Query(ctx, nil)
+
+	return "GetVoteByID function has been called", nil
+}
+
+func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
+
 	dal.Query(ctx, nil)
 
 	return "GetVoteByID function has been called", nil

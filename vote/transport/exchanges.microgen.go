@@ -9,4 +9,18 @@ type (
 	GetVoteByIdResponse struct {
 		Result string `json:"result"`
 	}
+
+	GetVotesByUserIdRequest struct {
+		Id string `json:"id"`
+	}
+	GetVotesByUserIdResponse struct {
+		Result string `json:"result"`
+	}
+
+	GetVotesByClubIdRequest struct {
+		Id string `json:"id"`
+	}
+	GetVotesByClubIdResponse struct {
+		Result string `json:"result"`
+	}
 )

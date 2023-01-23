@@ -33,3 +33,23 @@ func (M recoveringMiddleware) GetVoteById(ctx context.Context, id string) (resul
 	}()
 	return M.next.GetVoteById(ctx, id)
 }
+
+func (M recoveringMiddleware) GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			M.logger.Log("method", "GetVotesByUserId", "message", r)
+			err = fmt.Errorf("%v", r)
+		}
+	}()
+	return M.next.GetVotesByUserId(ctx, id)
+}
+
+func (M recoveringMiddleware) GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			M.logger.Log("method", "GetVotesByClubId", "message", r)
+			err = fmt.Errorf("%v", r)
+		}
+	}()
+	return M.next.GetVotesByClubId(ctx, id)
+}

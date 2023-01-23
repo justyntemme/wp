@@ -23,8 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type VoteServiceClient interface {
 	GetVoteById(ctx context.Context, in *GetVoteByIdRequest, opts ...grpc.CallOption) (*GetVoteByIdResponse, error)
-	GetVoteByClubId(ctx context.Context, in *GetVoteByClubIdRequest, opts ...grpc.CallOption) (*GetVoteByClubIdResponse, error)
-	GetVoteByUserId(ctx context.Context, in *GetVoteByUserIdRequest, opts ...grpc.CallOption) (*GetVoteByUserIdResponse, error)
+	GetVotesByClubId(ctx context.Context, in *GetVotesByClubIdRequest, opts ...grpc.CallOption) (*GetVotesByClubIdResponse, error)
+	GetVotesByUserId(ctx context.Context, in *GetVotesByUserIdRequest, opts ...grpc.CallOption) (*GetVotesByUserIdResponse, error)
 }
 
 type voteServiceClient struct {
@@ -44,18 +44,18 @@ func (c *voteServiceClient) GetVoteById(ctx context.Context, in *GetVoteByIdRequ
 	return out, nil
 }
 
-func (c *voteServiceClient) GetVoteByClubId(ctx context.Context, in *GetVoteByClubIdRequest, opts ...grpc.CallOption) (*GetVoteByClubIdResponse, error) {
-	out := new(GetVoteByClubIdResponse)
-	err := c.cc.Invoke(ctx, "/vote.VoteService/GetVoteByClubId", in, out, opts...)
+func (c *voteServiceClient) GetVotesByClubId(ctx context.Context, in *GetVotesByClubIdRequest, opts ...grpc.CallOption) (*GetVotesByClubIdResponse, error) {
+	out := new(GetVotesByClubIdResponse)
+	err := c.cc.Invoke(ctx, "/vote.VoteService/GetVotesByClubId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *voteServiceClient) GetVoteByUserId(ctx context.Context, in *GetVoteByUserIdRequest, opts ...grpc.CallOption) (*GetVoteByUserIdResponse, error) {
-	out := new(GetVoteByUserIdResponse)
-	err := c.cc.Invoke(ctx, "/vote.VoteService/GetVoteByUserId", in, out, opts...)
+func (c *voteServiceClient) GetVotesByUserId(ctx context.Context, in *GetVotesByUserIdRequest, opts ...grpc.CallOption) (*GetVotesByUserIdResponse, error) {
+	out := new(GetVotesByUserIdResponse)
+	err := c.cc.Invoke(ctx, "/vote.VoteService/GetVotesByUserId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -67,8 +67,8 @@ func (c *voteServiceClient) GetVoteByUserId(ctx context.Context, in *GetVoteByUs
 // for forward compatibility
 type VoteServiceServer interface {
 	GetVoteById(context.Context, *GetVoteByIdRequest) (*GetVoteByIdResponse, error)
-	GetVoteByClubId(context.Context, *GetVoteByClubIdRequest) (*GetVoteByClubIdResponse, error)
-	GetVoteByUserId(context.Context, *GetVoteByUserIdRequest) (*GetVoteByUserIdResponse, error)
+	GetVotesByClubId(context.Context, *GetVotesByClubIdRequest) (*GetVotesByClubIdResponse, error)
+	GetVotesByUserId(context.Context, *GetVotesByUserIdRequest) (*GetVotesByUserIdResponse, error)
 	mustEmbedUnimplementedVoteServiceServer()
 }
 
@@ -79,11 +79,11 @@ type UnimplementedVoteServiceServer struct {
 func (UnimplementedVoteServiceServer) GetVoteById(context.Context, *GetVoteByIdRequest) (*GetVoteByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVoteById not implemented")
 }
-func (UnimplementedVoteServiceServer) GetVoteByClubId(context.Context, *GetVoteByClubIdRequest) (*GetVoteByClubIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetVoteByClubId not implemented")
+func (UnimplementedVoteServiceServer) GetVotesByClubId(context.Context, *GetVotesByClubIdRequest) (*GetVotesByClubIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVotesByClubId not implemented")
 }
-func (UnimplementedVoteServiceServer) GetVoteByUserId(context.Context, *GetVoteByUserIdRequest) (*GetVoteByUserIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetVoteByUserId not implemented")
+func (UnimplementedVoteServiceServer) GetVotesByUserId(context.Context, *GetVotesByUserIdRequest) (*GetVotesByUserIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVotesByUserId not implemented")
 }
 func (UnimplementedVoteServiceServer) mustEmbedUnimplementedVoteServiceServer() {}
 
@@ -116,38 +116,38 @@ func _VoteService_GetVoteById_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VoteService_GetVoteByClubId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVoteByClubIdRequest)
+func _VoteService_GetVotesByClubId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetVotesByClubIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VoteServiceServer).GetVoteByClubId(ctx, in)
+		return srv.(VoteServiceServer).GetVotesByClubId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/vote.VoteService/GetVoteByClubId",
+		FullMethod: "/vote.VoteService/GetVotesByClubId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VoteServiceServer).GetVoteByClubId(ctx, req.(*GetVoteByClubIdRequest))
+		return srv.(VoteServiceServer).GetVotesByClubId(ctx, req.(*GetVotesByClubIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _VoteService_GetVoteByUserId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVoteByUserIdRequest)
+func _VoteService_GetVotesByUserId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetVotesByUserIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VoteServiceServer).GetVoteByUserId(ctx, in)
+		return srv.(VoteServiceServer).GetVotesByUserId(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/vote.VoteService/GetVoteByUserId",
+		FullMethod: "/vote.VoteService/GetVotesByUserId",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VoteServiceServer).GetVoteByUserId(ctx, req.(*GetVoteByUserIdRequest))
+		return srv.(VoteServiceServer).GetVotesByUserId(ctx, req.(*GetVotesByUserIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -164,12 +164,12 @@ var VoteService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _VoteService_GetVoteById_Handler,
 		},
 		{
-			MethodName: "GetVoteByClubId",
-			Handler:    _VoteService_GetVoteByClubId_Handler,
+			MethodName: "GetVotesByClubId",
+			Handler:    _VoteService_GetVotesByClubId_Handler,
 		},
 		{
-			MethodName: "GetVoteByUserId",
-			Handler:    _VoteService_GetVoteByUserId_Handler,
+			MethodName: "GetVotesByUserId",
+			Handler:    _VoteService_GetVotesByUserId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

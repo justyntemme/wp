@@ -21,7 +21,7 @@ func init() {
 	}
 }
 
-func Query(ctx context.Context, pipeline []bson.D) (result string, err error) {
+func query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 
 	// Get a handle to the orders collection
 	orders := client.Database("wp").Collection("users")

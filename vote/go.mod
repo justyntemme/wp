@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/go-kit/kit v0.8.0
 	github.com/gorilla/mux v1.7.3
-	github.com/justyntemme/wp/club v0.0.0-20230123170305-8e9b6a86676c
 	github.com/justyntemme/wp/dal v0.0.0-20230123165838-e0127a39bbc7
 	go-micro.dev/v4 v4.9.0
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2

@@ -48,13 +48,13 @@ func GetVotesByClubId(ctx context.Context, id string) (result string, err error)
 
 	matchStage := bson.D{
 		{Key: "$match", Value: bson.D{
-			{Key: "$cuid", Value: id},
+			{Key: "cuid", Value: id},
 		},
 		},
 	}
 	projectStage := bson.D{
 		{Key: "$project", Value: bson.D{
-			{Key: "$uuid", Value: 1},
+			{Key: "uuid", Value: 1},
 		}},
 	}
 	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})

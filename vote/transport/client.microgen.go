@@ -10,7 +10,7 @@ import (
 )
 
 func (set EndpointsSet) GetVoteById(arg0 context.Context, arg1 string) (res0 string, res1 error) {
-	request := GetVoteByIdRequest{Id: arg1}
+	request := GetVoteByIdRequest{VoteId: arg1}
 	response, res1 := set.GetVoteByIdEndpoint(arg0, &request)
 	if res1 != nil {
 		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {
@@ -22,7 +22,7 @@ func (set EndpointsSet) GetVoteById(arg0 context.Context, arg1 string) (res0 str
 }
 
 func (set EndpointsSet) GetVotesByUserId(arg0 context.Context, arg1 string) (res0 string, res1 error) {
-	request := GetVotesByUserIdRequest{Id: arg1}
+	request := GetVotesByUserIdRequest{UserId: arg1}
 	response, res1 := set.GetVotesByUserIdEndpoint(arg0, &request)
 	if res1 != nil {
 		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {
@@ -34,7 +34,7 @@ func (set EndpointsSet) GetVotesByUserId(arg0 context.Context, arg1 string) (res
 }
 
 func (set EndpointsSet) GetVotesByClubId(arg0 context.Context, arg1 string) (res0 string, res1 error) {
-	request := GetVotesByClubIdRequest{Id: arg1}
+	request := GetVotesByClubIdRequest{ClubId: arg1}
 	response, res1 := set.GetVotesByClubIdEndpoint(arg0, &request)
 	if res1 != nil {
 		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {

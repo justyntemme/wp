@@ -4,21 +4,21 @@ package transport
 
 type (
 	GetVoteByIdRequest struct {
-		Id string `json:"id"`
+		VoteId string `json:"vote_id"`
 	}
 	GetVoteByIdResponse struct {
 		Result string `json:"result"`
 	}
 
 	GetVotesByUserIdRequest struct {
-		Id string `json:"id"`
+		UserId string `json:"user_id"`
 	}
 	GetVotesByUserIdResponse struct {
 		Result string `json:"result"`
 	}
 
 	GetVotesByClubIdRequest struct {
-		Id string `json:"id"`
+		ClubId string `json:"club_id"`
 	}
 	GetVotesByClubIdResponse struct {
 		Result string `json:"result"`

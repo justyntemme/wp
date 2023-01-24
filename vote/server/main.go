@@ -11,9 +11,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	vote "github.com/justyntemme/wp/vote"
-
 	log "github.com/go-kit/kit/log"
+	vote "github.com/justyntemme/wp/vote"
 	protobuf "github.com/justyntemme/wp/vote/proto"
 	service "github.com/justyntemme/wp/vote/service"
 	transport "github.com/justyntemme/wp/vote/transport"
@@ -121,11 +120,14 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 	go func() {
 		ch <- httpServer.ListenAndServe()
 	}()
+
 	select {
 	case err := <-ch:
 		if err == http1.ErrServerClosed {
 			return nil
 		}
+		fmt.Printf(err.Error())
+
 		return fmt.Errorf("http server: serve: %v", err)
 	case <-ctx.Done():
 		return httpServer.Shutdown(context.Background())

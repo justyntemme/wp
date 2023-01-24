@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/justyntemme/wp/dal"
 	"go-micro.dev/v4/util/log"
@@ -12,12 +13,12 @@ import (
 type VoteService interface {
 	// Add your methods here
 	// e.x: Foo(ctx context.Context,s string)(rs string, err error)
-	GetVoteById(ctx context.Context, id string) (result string, err error)
-	GetVotesByUserId(ctx context.Context, id string) (result string, err error)
-	GetVotesByClubId(ctx context.Context, id string) (result string, err error)
+	GetVoteById(ctx context.Context, VoteId string) (result string, err error)
+	GetVotesByUserId(ctx context.Context, UserId string) (result string, err error)
+	GetVotesByClubId(ctx context.Context, ClubId string) (result string, err error)
 }
 
-func GetVoteById(ctx context.Context, id string) (result string, err error) {
+func GetVoteById(ctx context.Context, ClubId string) (result string, err error) {
 
 	//var pipeline []bson.M
 
@@ -32,13 +33,17 @@ func GetVoteById(ctx context.Context, id string) (result string, err error) {
 	return "GetVoteByID function has been called", nil
 }
 
-func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
-	result, err = dal.GetVotesByClubId(ctx, id)
+func GetVotesByClubId(ctx context.Context, VoteId string) (result string, err error) {
+
+	log.Errorf("ID value is : " + VoteId)
+	fmt.Println("get votes by club id " + VoteId)
+	result, err = dal.GetVotesByClubId(ctx, VoteId)
+
 	if err != nil {
 		log.Errorf(err.Error())
 	}
 
-	return result, nil
+	return result, err
 }
 
 func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {

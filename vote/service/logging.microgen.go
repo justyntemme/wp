@@ -29,7 +29,7 @@ func (M loggingMiddleware) GetVoteById(arg0 context.Context, arg1 string) (res0 
 		M.logger.Log(
 			"method", "GetVoteById",
 			"message", "GetVoteById called",
-			"request", logGetVoteByIdRequest{Id: arg1},
+			"request", logGetVoteByIdRequest{VoteId: arg1},
 			"response", logGetVoteByIdResponse{Result: res0},
 			"err", res1,
 			"took", time.Since(begin))
@@ -42,7 +42,7 @@ func (M loggingMiddleware) GetVotesByUserId(arg0 context.Context, arg1 string) (
 		M.logger.Log(
 			"method", "GetVotesByUserId",
 			"message", "GetVotesByUserId called",
-			"request", logGetVotesByUserIdRequest{Id: arg1},
+			"request", logGetVotesByUserIdRequest{UserId: arg1},
 			"response", logGetVotesByUserIdResponse{Result: res0},
 			"err", res1,
 			"took", time.Since(begin))
@@ -55,7 +55,7 @@ func (M loggingMiddleware) GetVotesByClubId(arg0 context.Context, arg1 string) (
 		M.logger.Log(
 			"method", "GetVotesByClubId",
 			"message", "GetVotesByClubId called",
-			"request", logGetVotesByClubIdRequest{Id: arg1},
+			"request", logGetVotesByClubIdRequest{ClubId: arg1},
 			"response", logGetVotesByClubIdResponse{Result: res0},
 			"err", res1,
 			"took", time.Since(begin))
@@ -65,19 +65,19 @@ func (M loggingMiddleware) GetVotesByClubId(arg0 context.Context, arg1 string) (
 
 type (
 	logGetVoteByIdRequest struct {
-		Id string
+		VoteId string
 	}
 	logGetVoteByIdResponse struct {
 		Result string
 	}
 	logGetVotesByUserIdRequest struct {
-		Id string
+		UserId string
 	}
 	logGetVotesByUserIdResponse struct {
 		Result string
 	}
 	logGetVotesByClubIdRequest struct {
-		Id string
+		ClubId string
 	}
 	logGetVotesByClubIdResponse struct {
 		Result string

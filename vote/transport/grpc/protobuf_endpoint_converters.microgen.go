@@ -15,7 +15,7 @@ func _Encode_GetVoteById_Request(ctx context.Context, request interface{}) (inte
 		return nil, errors.New("nil GetVoteByIdRequest")
 	}
 	req := request.(*transport.GetVoteByIdRequest)
-	return &pb.GetVoteByIdRequest{Id: req.Id}, nil
+	return &pb.GetVoteByIdRequest{VoteId: req.VoteId}, nil
 }
 
 func _Encode_GetVotesByUserId_Request(ctx context.Context, request interface{}) (interface{}, error) {
@@ -23,7 +23,7 @@ func _Encode_GetVotesByUserId_Request(ctx context.Context, request interface{}) 
 		return nil, errors.New("nil GetVotesByUserIdRequest")
 	}
 	req := request.(*transport.GetVotesByUserIdRequest)
-	return &pb.GetVotesByUserIdRequest{Id: req.Id}, nil
+	return &pb.GetVotesByUserIdRequest{UserId: req.UserId}, nil
 }
 
 func _Encode_GetVotesByClubId_Request(ctx context.Context, request interface{}) (interface{}, error) {
@@ -31,7 +31,7 @@ func _Encode_GetVotesByClubId_Request(ctx context.Context, request interface{}) 
 		return nil, errors.New("nil GetVotesByClubIdRequest")
 	}
 	req := request.(*transport.GetVotesByClubIdRequest)
-	return &pb.GetVotesByClubIdRequest{Id: req.Id}, nil
+	return &pb.GetVotesByClubIdRequest{ClubId: req.ClubId}, nil
 }
 
 func _Encode_GetVoteById_Response(ctx context.Context, response interface{}) (interface{}, error) {
@@ -63,7 +63,7 @@ func _Decode_GetVoteById_Request(ctx context.Context, request interface{}) (inte
 		return nil, errors.New("nil GetVoteByIdRequest")
 	}
 	req := request.(*pb.GetVoteByIdRequest)
-	return &transport.GetVoteByIdRequest{Id: string(req.Id)}, nil
+	return &transport.GetVoteByIdRequest{VoteId: string(req.VoteId)}, nil
 }
 
 func _Decode_GetVotesByUserId_Request(ctx context.Context, request interface{}) (interface{}, error) {
@@ -71,7 +71,7 @@ func _Decode_GetVotesByUserId_Request(ctx context.Context, request interface{}) 
 		return nil, errors.New("nil GetVotesByUserIdRequest")
 	}
 	req := request.(*pb.GetVotesByUserIdRequest)
-	return &transport.GetVotesByUserIdRequest{Id: string(req.Id)}, nil
+	return &transport.GetVotesByUserIdRequest{UserId: string(req.UserId)}, nil
 }
 
 func _Decode_GetVotesByClubId_Request(ctx context.Context, request interface{}) (interface{}, error) {
@@ -79,7 +79,7 @@ func _Decode_GetVotesByClubId_Request(ctx context.Context, request interface{}) 
 		return nil, errors.New("nil GetVotesByClubIdRequest")
 	}
 	req := request.(*pb.GetVotesByClubIdRequest)
-	return &transport.GetVotesByClubIdRequest{Id: string(req.Id)}, nil
+	return &transport.GetVotesByClubIdRequest{ClubId: string(req.ClubId)}, nil
 }
 
 func _Decode_GetVoteById_Response(ctx context.Context, response interface{}) (interface{}, error) {

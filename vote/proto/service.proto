@@ -12,7 +12,8 @@ service VoteService {
 }
 
 message GetVotesByClubIdRequest {
-	string id = 1;
+	
+	string ClubId = 1;
 }
 
 message GetVotesByClubIdResponse {
@@ -21,7 +22,7 @@ message GetVotesByClubIdResponse {
 
 
 message GetVotesByUserIdRequest {
-	string id = 1;
+	string UserId = 1;
 }
 
 message GetVotesByUserIdResponse {
@@ -29,7 +30,7 @@ message GetVotesByUserIdResponse {
 }
 
 message GetVoteByIdRequest {
-	string id = 1;
+	string VoteId = 1;
 }
 
 message GetVoteByIdResponse {

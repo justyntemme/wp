@@ -2,8 +2,6 @@ package service
 
 import (
 	"context"
-
-	dal "github.com/justyntemme/wp/dal"
 )
 
 // @microgen middleware, logging, grpc, http, recovering
@@ -25,7 +23,6 @@ func GetClubById(ctx context.Context, id string) (result string, err error) {
 	// 	// {"$sort": bson.M{"total": -1}},
 	// }
 	//
-	dal.Query(ctx, nil)
 
 	return "GetClubByID function has been called", nil
 }

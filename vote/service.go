@@ -2,10 +2,6 @@ package service
 
 import (
 	"context"
-	"fmt"
-
-	"github.com/justyntemme/wp/dal"
-	"go-micro.dev/v4/util/log"
 )
 
 // @microgen middleware, logging, grpc, http, recovering
@@ -33,18 +29,18 @@ func GetVoteById(ctx context.Context, ClubId string) (result string, err error) 
 	return "GetVoteByID function has been called", nil
 }
 
-func GetVotesByClubId(ctx context.Context, VoteId string) (result string, err error) {
+// func GetVotesByClubId(ctx context.Context, VoteId string) (result string, err error) {
 
-	log.Errorf("ID value is : " + VoteId)
-	fmt.Println("get votes by club id " + VoteId)
-	result, err = dal.GetVotesByClubId(ctx, VoteId)
+// 	log.Errorf("ID value is : " + VoteId)
+// 	fmt.Println("get votes by club id " + VoteId)
+// 	result, err = dal.GetVotesByClubId(ctx, VoteId)
 
-	if err != nil {
-		log.Errorf(err.Error())
-	}
+// 	if err != nil {
+// 		log.Errorf(err.Error())
+// 	}
 
-	return result, err
-}
+// 	return result, err
+// }
 
 func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
 

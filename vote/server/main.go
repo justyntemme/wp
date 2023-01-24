@@ -12,6 +12,7 @@ import (
 	"syscall"
 
 	log "github.com/go-kit/kit/log"
+	"github.com/justyntemme/wp/dal"
 	vote "github.com/justyntemme/wp/vote"
 	protobuf "github.com/justyntemme/wp/vote/proto"
 	service "github.com/justyntemme/wp/vote/service"
@@ -23,6 +24,15 @@ import (
 	grpc1 "google.golang.org/grpc"
 )
 
+type VoteService struct {
+	VoteService *vote.VoteService
+}
+
+func NewVoteService() vote.VoteService {
+	svc := &VoteService{}
+	return svc
+}
+
 func main() {
 	logger := log.With(InitLogger(os.Stdout), "level", "info")
 	errorLogger := log.With(InitLogger(os.Stderr), "level", "error")
@@ -33,7 +43,7 @@ func main() {
 	g.Go(func() error {
 		return InterruptHandler(ctx)
 	})
-	var svc vote.VoteService
+	svc := NewVoteService()
 
 	//protobuf.NewVoteService("Vote Service", nil) // TODO: = service.NewVoteService () // Create new service.
 	svc = service.LoggingMiddleware(logger)(svc) // Setup service logging.
@@ -132,4 +142,37 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 	case <-ctx.Done():
 		return httpServer.Shutdown(context.Background())
 	}
+}
+
+func (*VoteService) GetVotesByClubId(ctx context.Context, VoteId string) (result string, err error) {
+
+	fmt.Printf("ID value is : " + VoteId)
+	fmt.Println("get votes by club id " + VoteId)
+	result, err = dal.GetVotesByClubId(ctx, VoteId)
+
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
+}
+
+func (*VoteService) GetVoteById(ctx context.Context, ClubId string) (result string, err error) {
+
+	//var pipeline []bson.M
+
+	// Define the aggregation pipeline
+	// pipeline = []bson.M{
+	// 	{"$match": bson.M{"Id": "A"}},
+	// 	// {"$group": bson.M{"_id": "$cust_id", "total": bson.M{"$sum": "$amount"}}},
+	// 	// {"$sort": bson.M{"total": -1}},
+	// }
+	//
+
+	return "GetVoteByID function has been called", nil
+}
+
+func (*VoteService) GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
+
+	return "response", err
 }

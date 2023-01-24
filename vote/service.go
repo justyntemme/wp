@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/justyntemme/wp/dal"
+	"go-micro.dev/v4/util/log"
 )
 
 // @microgen middleware, logging, grpc, http, recovering
@@ -32,11 +33,12 @@ func GetVoteById(ctx context.Context, id string) (result string, err error) {
 }
 
 func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
-	result, err = dal.GetVotesByClubId()
+	result, err = dal.GetVotesByClubId(ctx, id)
+	if err != nil {
+		log.Errorf(err.Error())
+	}
 
-	// result, err = dal.GetVotesByClubId(id)
-
-	return "", nil
+	return result, nil
 }
 
 func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {

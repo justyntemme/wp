@@ -32,10 +32,10 @@ func query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 	var results []bson.M
 
 	// Get a handle to the orders collection
-	orders := client.Database("wp").Collection("votes")
+	collection := client.Database("wp").Collection("votes")
 
 	// Execute the aggregation pipeline
-	cursor, err := orders.Aggregate(context.TODO(), pipeline)
+	cursor, err := collection.Aggregate(context.TODO(), pipeline)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -66,8 +66,7 @@ func DalGetVotesByClubId(ctx context.Context, id string) (result string, err err
 	if err != nil {
 		fmt.Errorf(err.Error())
 	}
-	mapBytes, err := json.Marshal(result)
-	mapString := string(mapBytes)
-	return mapString, err
+
+	return result, err
 
 }

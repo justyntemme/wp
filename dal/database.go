@@ -46,12 +46,18 @@ func query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 
 func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
 
+	matchStage := bson.D{
+		{Key: "$match", Value: bson.D{
+			{Key: "$cid", Value: id},
+		},
+		},
+	}
 	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
-	match := bson.D{
-		bson.E{"$match",
-			bson.E{"uuid", id}}}
+	// match := bson.D{
+	// 	"$match",
+	// 	bson.E{"uuid", id}}
 
-	pipeline := []bson.D{match}
+	pipeline := []bson.D{matchStage}
 
 	return query(ctx, pipeline)
 

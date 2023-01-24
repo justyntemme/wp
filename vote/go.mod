@@ -5,13 +5,14 @@ go 1.19
 require (
 	github.com/go-kit/kit v0.8.0
 	github.com/gorilla/mux v1.7.3
-	github.com/justyntemme/wp/dal v0.0.0-20230124150951-e5d9d2249746
 	go-micro.dev/v4 v4.9.0
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	google.golang.org/grpc v1.32.0
 	google.golang.org/protobuf v1.28.1
 )
+
+require github.com/justyntemme/wp/dal v0.0.0-20230124175746-8a0ed43b3e20
 
 require (
 	github.com/evanphx/json-patch/v5 v5.5.0 // indirect

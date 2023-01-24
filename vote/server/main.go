@@ -144,11 +144,10 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 	}
 }
 
-func (*VoteService) GetVotesByClubId(ctx context.Context, VoteId string) (result string, err error) {
+func (*VoteService) GetVotesByClubId(ctx context.Context, ClubId string) (result string, err error) {
 
-	fmt.Printf("ID value is : " + VoteId)
-	fmt.Println("get votes by club id " + VoteId)
-	result, err = dal.GetVotesByClubId(ctx, VoteId)
+	fmt.Printf("ClubId value is : " + ClubId)
+	result, err = dal.GetVotesByClubId(ctx, ClubId)
 
 	if err != nil {
 		fmt.Errorf(err.Error())

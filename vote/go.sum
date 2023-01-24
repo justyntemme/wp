@@ -240,6 +240,8 @@ github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfV
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
 github.com/justyntemme/wp/dal v0.0.0-20230124150951-e5d9d2249746 h1:yro9H2skkKY+9x/Rq6GDhQe/OGxMm08+7Kqo02GXnxM=
 github.com/justyntemme/wp/dal v0.0.0-20230124150951-e5d9d2249746/go.mod h1:E8P9KIdJu2IvanVTnoqwNkwC9lOQjV09Yu8KJ1WkUG4=
+github.com/justyntemme/wp/dal v0.0.0-20230124175746-8a0ed43b3e20 h1:Ct3yGJR+IdvJaH0oFrhLICHGVqCGe6prVORdRWhOfSU=
+github.com/justyntemme/wp/dal v0.0.0-20230124175746-8a0ed43b3e20/go.mod h1:E8P9KIdJu2IvanVTnoqwNkwC9lOQjV09Yu8KJ1WkUG4=
 github.com/k0kubun/go-ansi v0.0.0-20180517002512-3bf9e2903213/go.mod h1:vNUNkEQ1e29fT/6vq2aBdFsgNPmy8qMdSay1npru+Sw=
 github.com/kisielk/errcheck v1.1.0/go.mod h1:EZBBE59ingxPouuu3KfxchcWSUPOHkagtvWXihfKN4Q=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=

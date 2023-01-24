@@ -12,7 +12,6 @@ import (
 	"syscall"
 
 	log "github.com/go-kit/kit/log"
-	"github.com/justyntemme/wp/dal"
 	vote "github.com/justyntemme/wp/vote"
 	protobuf "github.com/justyntemme/wp/vote/proto"
 	service "github.com/justyntemme/wp/vote/service"
@@ -136,7 +135,6 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 		if err == http1.ErrServerClosed {
 			return nil
 		}
-		fmt.Printf(err.Error())
 
 		return fmt.Errorf("http server: serve: %v", err)
 	case <-ctx.Done():
@@ -146,27 +144,16 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 
 func (*VoteService) GetVotesByClubId(ctx context.Context, ClubId string) (result string, err error) {
 
-	fmt.Printf("ClubId value is : " + ClubId)
-	result, err = dal.GetVotesByClubId(ctx, ClubId)
+	result, err = vote.DalGetVotesByClubId(ctx, ClubId)
 
 	if err != nil {
 		fmt.Errorf(err.Error())
 	}
 
-	return result, err
+	return result, err //result is a map not being parsed correctly
 }
 
 func (*VoteService) GetVoteById(ctx context.Context, ClubId string) (result string, err error) {
-
-	//var pipeline []bson.M
-
-	// Define the aggregation pipeline
-	// pipeline = []bson.M{
-	// 	{"$match": bson.M{"Id": "A"}},
-	// 	// {"$group": bson.M{"_id": "$cust_id", "total": bson.M{"$sum": "$amount"}}},
-	// 	// {"$sort": bson.M{"total": -1}},
-	// }
-	//
 
 	return "GetVoteByID function has been called", nil
 }

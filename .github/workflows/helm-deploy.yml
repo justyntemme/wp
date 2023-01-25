@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [user, club, vote]
+        service: [vote, club, user]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2

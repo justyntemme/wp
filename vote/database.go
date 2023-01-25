@@ -28,6 +28,21 @@ func init() {
 	}
 }
 
+// Writes
+func AddVoteForClub(ctx context.Context, cuid string, userId string) error {
+	vote := bson.M{
+		"cuid": cuid,
+		"uuid": userId,
+	}
+	// Get a handle to the orders collection
+	votesCollection := client.Database("wp").Collection("votes")
+	_, err := votesCollection.InsertOne(ctx, vote)
+	if err != nil {
+		return fmt.Errorf("Error adding vote: %v", err)
+	}
+	return nil
+}
+
 func query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 	var results []bson.M
 
@@ -45,6 +60,7 @@ func query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 	return string(output), err
 }
 
+// Reads
 func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
 	var pipeline []bson.D
 

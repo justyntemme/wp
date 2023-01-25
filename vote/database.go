@@ -40,17 +40,43 @@ func query(ctx context.Context, pipeline []bson.D) (result string, err error) {
 		log.Fatal(err)
 	}
 	cursor.All(ctx, &results)
+	output, err := json.Marshal(results)
 
-	output, err := json.MarshalIndent(results, "", " ")
 	return string(output), err
 }
 
-func DalGetVotesByClubId(ctx context.Context, id string) (result string, err error) {
+func GetVotesByClubId(ctx context.Context, id string) (result string, err error) {
 	var pipeline []bson.D
 
 	matchStage := bson.D{
 		{Key: "$match", Value: bson.D{
 			{Key: "cuid", Value: id},
+		},
+		},
+	}
+	projectStage := bson.D{
+		{Key: "$project", Value: bson.D{
+			{Key: "uuid", Value: 1},
+		}},
+	}
+
+	pipeline = append(pipeline, matchStage, projectStage)
+
+	result, err = query(ctx, pipeline)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
+
+}
+
+func GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
+	var pipeline []bson.D
+
+	matchStage := bson.D{
+		{Key: "$match", Value: bson.D{
+			{Key: "uuid", Value: id},
 		},
 		},
 	}

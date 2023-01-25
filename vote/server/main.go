@@ -144,13 +144,12 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 
 func (*VoteService) GetVotesByClubId(ctx context.Context, ClubId string) (result string, err error) {
 
-	result, err = vote.DalGetVotesByClubId(ctx, ClubId)
-
+	result, err = vote.GetVotesByClubId(ctx, ClubId)
 	if err != nil {
 		fmt.Errorf(err.Error())
 	}
 
-	return result, err //result is a map not being parsed correctly
+	return result, err
 }
 
 func (*VoteService) GetVoteById(ctx context.Context, ClubId string) (result string, err error) {
@@ -160,5 +159,9 @@ func (*VoteService) GetVoteById(ctx context.Context, ClubId string) (result stri
 
 func (*VoteService) GetVotesByUserId(ctx context.Context, id string) (result string, err error) {
 
-	return "response", err
+	result, err = vote.GetVotesByUserId(ctx, id)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+	return result, err
 }

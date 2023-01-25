@@ -9,4 +9,25 @@ type (
 	GetClubByIdResponse struct {
 		Result string `json:"result"`
 	}
+
+	GetTopClubsRequest struct {
+		Limit int32 `json:"limit"`
+	}
+	GetTopClubsResponse struct {
+		Result string `json:"result"`
+	}
+
+	GetTopClubsNearMeRequest struct {
+		Limit int32 `json:"limit"`
+	}
+	GetTopClubsNearMeResponse struct {
+		Result string `json:"result"`
+	}
+
+	GetAllClubsNearMeRequest struct {
+		Limit int32 `json:"limit"`
+	}
+	GetAllClubsNearMeResponse struct {
+		Result string `json:"result"`
+	}
 )

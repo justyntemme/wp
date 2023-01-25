@@ -10,11 +10,34 @@ import (
 )
 
 func NewGRPCClient(conn *grpc.ClientConn, addr string, opts ...grpckit.ClientOption) transport.EndpointsSet {
-	return transport.EndpointsSet{GetClubByIdEndpoint: grpckit.NewClient(
-		conn, addr, "GetClubById",
-		_Encode_GetClubById_Request,
-		_Decode_GetClubById_Response,
-		pb.GetClubByIdResponse{},
-		opts...,
-	).Endpoint()}
+	return transport.EndpointsSet{
+		GetAllClubsNearMeEndpoint: grpckit.NewClient(
+			conn, addr, "GetAllClubsNearMe",
+			_Encode_GetAllClubsNearMe_Request,
+			_Decode_GetAllClubsNearMe_Response,
+			pb.GetAllClubsNearMeResponse{},
+			opts...,
+		).Endpoint(),
+		GetClubByIdEndpoint: grpckit.NewClient(
+			conn, addr, "GetClubById",
+			_Encode_GetClubById_Request,
+			_Decode_GetClubById_Response,
+			pb.GetClubByIdResponse{},
+			opts...,
+		).Endpoint(),
+		GetTopClubsEndpoint: grpckit.NewClient(
+			conn, addr, "GetTopClubs",
+			_Encode_GetTopClubs_Request,
+			_Decode_GetTopClubs_Response,
+			pb.GetTopClubsResponse{},
+			opts...,
+		).Endpoint(),
+		GetTopClubsNearMeEndpoint: grpckit.NewClient(
+			conn, addr, "GetTopClubsNearMe",
+			_Encode_GetTopClubsNearMe_Request,
+			_Decode_GetTopClubsNearMe_Response,
+			pb.GetTopClubsNearMeResponse{},
+			opts...,
+		).Endpoint(),
+	}
 }

@@ -9,10 +9,30 @@ import (
 )
 
 func NewHTTPClient(u *url.URL, opts ...httpkit.ClientOption) transport.EndpointsSet {
-	return transport.EndpointsSet{GetClubByIdEndpoint: httpkit.NewClient(
-		"POST", u,
-		_Encode_GetClubById_Request,
-		_Decode_GetClubById_Response,
-		opts...,
-	).Endpoint()}
+	return transport.EndpointsSet{
+		GetAllClubsNearMeEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetAllClubsNearMe_Request,
+			_Decode_GetAllClubsNearMe_Response,
+			opts...,
+		).Endpoint(),
+		GetClubByIdEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetClubById_Request,
+			_Decode_GetClubById_Response,
+			opts...,
+		).Endpoint(),
+		GetTopClubsEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetTopClubs_Request,
+			_Decode_GetTopClubs_Response,
+			opts...,
+		).Endpoint(),
+		GetTopClubsNearMeEndpoint: httpkit.NewClient(
+			"POST", u,
+			_Encode_GetTopClubsNearMe_Request,
+			_Decode_GetTopClubsNearMe_Response,
+			opts...,
+		).Endpoint(),
+	}
 }

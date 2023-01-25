@@ -33,3 +33,33 @@ func (M recoveringMiddleware) GetClubById(ctx context.Context, id string) (resul
 	}()
 	return M.next.GetClubById(ctx, id)
 }
+
+func (M recoveringMiddleware) GetTopClubs(ctx context.Context, limit int32) (result string, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			M.logger.Log("method", "GetTopClubs", "message", r)
+			err = fmt.Errorf("%v", r)
+		}
+	}()
+	return M.next.GetTopClubs(ctx, limit)
+}
+
+func (M recoveringMiddleware) GetTopClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			M.logger.Log("method", "GetTopClubsNearMe", "message", r)
+			err = fmt.Errorf("%v", r)
+		}
+	}()
+	return M.next.GetTopClubsNearMe(ctx, limit)
+}
+
+func (M recoveringMiddleware) GetAllClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			M.logger.Log("method", "GetAllClubsNearMe", "message", r)
+			err = fmt.Errorf("%v", r)
+		}
+	}()
+	return M.next.GetAllClubsNearMe(ctx, limit)
+}

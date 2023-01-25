@@ -68,3 +68,81 @@ func GetClubsById(ctx context.Context, id string) (result string, err error) {
 	return query(ctx, pipeline)
 
 }
+
+// TODO
+func GetTopClubs(ctx context.Context, limit int32) (result string, err error) {
+
+	matchStage := bson.D{
+		{Key: "$match", Value: bson.D{
+			{Key: "cuid", Value: limit},
+		},
+		},
+	}
+	projectStage := bson.D{
+		{Key: "$project", Value: bson.D{
+			{Key: "cuid", Value: 1},
+		}},
+	}
+	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
+	// match := bson.D{
+	// 	"$match",
+	// 	bson.E{"uuid", id}}
+	var pipeline []bson.D
+
+	pipeline = append(pipeline, matchStage, projectStage)
+
+	return query(ctx, pipeline)
+
+}
+
+// TODO
+func GetTopClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
+
+	matchStage := bson.D{
+		{Key: "$match", Value: bson.D{
+			{Key: "cuid", Value: limit},
+		},
+		},
+	}
+	projectStage := bson.D{
+		{Key: "$project", Value: bson.D{
+			{Key: "cuid", Value: 1},
+		}},
+	}
+	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
+	// match := bson.D{
+	// 	"$match",
+	// 	bson.E{"uuid", id}}
+	var pipeline []bson.D
+
+	pipeline = append(pipeline, matchStage, projectStage)
+
+	return query(ctx, pipeline)
+
+}
+
+// TODO
+func GetAllClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
+
+	matchStage := bson.D{
+		{Key: "$match", Value: bson.D{
+			{Key: "cuid", Value: limit},
+		},
+		},
+	}
+	projectStage := bson.D{
+		{Key: "$project", Value: bson.D{
+			{Key: "cuid", Value: 1},
+		}},
+	}
+	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
+	// match := bson.D{
+	// 	"$match",
+	// 	bson.E{"uuid", id}}
+	var pipeline []bson.D
+
+	pipeline = append(pipeline, matchStage, projectStage)
+
+	return query(ctx, pipeline)
+
+}

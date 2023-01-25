@@ -24,6 +24,15 @@ import (
 	grpc1 "google.golang.org/grpc"
 )
 
+type ClubService struct {
+	ClubService *club.ClubService
+}
+
+func NewClubService() club.ClubService {
+	svc := &ClubService{}
+	return svc
+}
+
 func main() {
 	logger := log.With(InitLogger(os.Stdout), "level", "info")
 	errorLogger := log.With(InitLogger(os.Stderr), "level", "error")
@@ -130,4 +139,44 @@ func ServeHTTP(ctx context.Context, endpoints *transport.EndpointsSet, addr stri
 	case <-ctx.Done():
 		return httpServer.Shutdown(context.Background())
 	}
+}
+
+func (*ClubService) GetClubById(ctx context.Context, id string) (result string, err error) {
+
+	result, err = club.GetClubsById(ctx, id)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
+}
+
+func (*ClubService) GetTopClubs(ctx context.Context, limit int32) (result string, err error) {
+
+	result, err = club.GetTopClubs(ctx, limit)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
+}
+
+func (*ClubService) GetTopClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
+
+	result, err = club.GetTopClubsNearMe(ctx, limit)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
+}
+
+func (*ClubService) GetAllClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
+
+	result, err = club.GetTopClubsNearMe(ctx, limit)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
 }

@@ -7,6 +7,9 @@ option go_package = ".;protobuf";
 // @protobuf github.com/justyntemme/wp/club/proto
 service ClubService {
 	rpc GetClubById(GetClubByIdRequest) returns (GetClubByIdResponse);
+	rpc GetTopClubs(GetTopClubsRequest) returns (GetTopClubsResponse);
+	rpc GetTopClubsNearMe(GetTopClubsNearMeRequest) returns (GetTopClubsNearMeResponse);
+	rpc GetAllClubsNearMe(GetAllClubsNearMeRequest) returns (GetAllClubsNearMeResponse);
 }
 
 message GetClubByIdRequest {
@@ -14,5 +17,29 @@ message GetClubByIdRequest {
 }
 
 message GetClubByIdResponse {
+	string result = 1;
+}
+
+message GetTopClubsRequest {
+	string id = 1;
+}
+
+message GetTopClubsResponse {
+	string result = 1;
+}
+
+message GetTopClubsNearMeRequest {
+	string id = 1;
+}
+
+message GetTopClubsNearMeResponse {
+	string result = 1;
+}
+
+message GetAllClubsNearMeRequest {
+	string id = 1;
+}
+
+message GetAllClubsNearMeResponse {
 	string result = 1;
 }

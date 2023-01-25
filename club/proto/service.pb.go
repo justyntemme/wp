@@ -114,6 +114,288 @@ func (x *GetClubByIdResponse) GetResult() string {
 	return ""
 }
 
+type GetTopClubsRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *GetTopClubsRequest) Reset() {
+	*x = GetTopClubsRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTopClubsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTopClubsRequest) ProtoMessage() {}
+
+func (x *GetTopClubsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTopClubsRequest.ProtoReflect.Descriptor instead.
+func (*GetTopClubsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetTopClubsRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetTopClubsResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *GetTopClubsResponse) Reset() {
+	*x = GetTopClubsResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTopClubsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTopClubsResponse) ProtoMessage() {}
+
+func (x *GetTopClubsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTopClubsResponse.ProtoReflect.Descriptor instead.
+func (*GetTopClubsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetTopClubsResponse) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
+type GetTopClubsNearMeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *GetTopClubsNearMeRequest) Reset() {
+	*x = GetTopClubsNearMeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTopClubsNearMeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTopClubsNearMeRequest) ProtoMessage() {}
+
+func (x *GetTopClubsNearMeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTopClubsNearMeRequest.ProtoReflect.Descriptor instead.
+func (*GetTopClubsNearMeRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetTopClubsNearMeRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetTopClubsNearMeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *GetTopClubsNearMeResponse) Reset() {
+	*x = GetTopClubsNearMeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTopClubsNearMeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTopClubsNearMeResponse) ProtoMessage() {}
+
+func (x *GetTopClubsNearMeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTopClubsNearMeResponse.ProtoReflect.Descriptor instead.
+func (*GetTopClubsNearMeResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetTopClubsNearMeResponse) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
+type GetAllClubsNearMeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *GetAllClubsNearMeRequest) Reset() {
+	*x = GetAllClubsNearMeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllClubsNearMeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllClubsNearMeRequest) ProtoMessage() {}
+
+func (x *GetAllClubsNearMeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllClubsNearMeRequest.ProtoReflect.Descriptor instead.
+func (*GetAllClubsNearMeRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetAllClubsNearMeRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetAllClubsNearMeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *GetAllClubsNearMeResponse) Reset() {
+	*x = GetAllClubsNearMeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_service_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllClubsNearMeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllClubsNearMeResponse) ProtoMessage() {}
+
+func (x *GetAllClubsNearMeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllClubsNearMeResponse.ProtoReflect.Descriptor instead.
+func (*GetAllClubsNearMeResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllClubsNearMeResponse) GetResult() string {
+	if x != nil {
+		return x.Result
+	}
+	return ""
+}
+
 var File_service_proto protoreflect.FileDescriptor
 
 var file_service_proto_rawDesc = []byte{
@@ -123,14 +405,46 @@ var file_service_proto_rawDesc = []byte{
 	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x2d, 0x0a, 0x13, 0x47,
 	0x65, 0x74, 0x43, 0x6c, 0x75, 0x62, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0x51, 0x0a, 0x0b, 0x43, 0x6c,
-	0x75, 0x62, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x0b, 0x47, 0x65, 0x74,
-	0x43, 0x6c, 0x75, 0x62, 0x42, 0x79, 0x49, 0x64, 0x12, 0x18, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e,
-	0x47, 0x65, 0x74, 0x43, 0x6c, 0x75, 0x62, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x19, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x75,
-	0x62, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0c, 0x5a,
-	0x0a, 0x2e, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x24, 0x0a, 0x12, 0x47, 0x65,
+	0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64,
+	0x22, 0x2d, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c,
+	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22,
+	0x2a, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65,
+	0x61, 0x72, 0x4d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x33, 0x0a, 0x19, 0x47,
+	0x65, 0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75,
+	0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74,
+	0x22, 0x2a, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e,
+	0x65, 0x61, 0x72, 0x4d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x33, 0x0a, 0x19,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73,
+	0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c,
+	0x74, 0x32, 0xc1, 0x02, 0x0a, 0x0b, 0x43, 0x6c, 0x75, 0x62, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x12, 0x42, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x75, 0x62, 0x42, 0x79, 0x49, 0x64,
+	0x12, 0x18, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x75, 0x62, 0x42,
+	0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e, 0x63, 0x6c, 0x75,
+	0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x75, 0x62, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x42, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x43,
+	0x6c, 0x75, 0x62, 0x73, 0x12, 0x18, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x54,
+	0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62,
+	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x54, 0x0a, 0x11, 0x47, 0x65, 0x74,
+	0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d, 0x65, 0x12, 0x1e,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62,
+	0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f,
+	0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x43, 0x6c, 0x75, 0x62,
+	0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x54, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65,
+	0x61, 0x72, 0x4d, 0x65, 0x12, 0x1e, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x41,
+	0x6c, 0x6c, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x63, 0x6c, 0x75, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x41,
+	0x6c, 0x6c, 0x43, 0x6c, 0x75, 0x62, 0x73, 0x4e, 0x65, 0x61, 0x72, 0x4d, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0c, 0x5a, 0x0a, 0x2e, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -145,16 +459,28 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_service_proto_goTypes = []interface{}{
-	(*GetClubByIdRequest)(nil),  // 0: club.GetClubByIdRequest
-	(*GetClubByIdResponse)(nil), // 1: club.GetClubByIdResponse
+	(*GetClubByIdRequest)(nil),        // 0: club.GetClubByIdRequest
+	(*GetClubByIdResponse)(nil),       // 1: club.GetClubByIdResponse
+	(*GetTopClubsRequest)(nil),        // 2: club.GetTopClubsRequest
+	(*GetTopClubsResponse)(nil),       // 3: club.GetTopClubsResponse
+	(*GetTopClubsNearMeRequest)(nil),  // 4: club.GetTopClubsNearMeRequest
+	(*GetTopClubsNearMeResponse)(nil), // 5: club.GetTopClubsNearMeResponse
+	(*GetAllClubsNearMeRequest)(nil),  // 6: club.GetAllClubsNearMeRequest
+	(*GetAllClubsNearMeResponse)(nil), // 7: club.GetAllClubsNearMeResponse
 }
 var file_service_proto_depIdxs = []int32{
 	0, // 0: club.ClubService.GetClubById:input_type -> club.GetClubByIdRequest
-	1, // 1: club.ClubService.GetClubById:output_type -> club.GetClubByIdResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: club.ClubService.GetTopClubs:input_type -> club.GetTopClubsRequest
+	4, // 2: club.ClubService.GetTopClubsNearMe:input_type -> club.GetTopClubsNearMeRequest
+	6, // 3: club.ClubService.GetAllClubsNearMe:input_type -> club.GetAllClubsNearMeRequest
+	1, // 4: club.ClubService.GetClubById:output_type -> club.GetClubByIdResponse
+	3, // 5: club.ClubService.GetTopClubs:output_type -> club.GetTopClubsResponse
+	5, // 6: club.ClubService.GetTopClubsNearMe:output_type -> club.GetTopClubsNearMeResponse
+	7, // 7: club.ClubService.GetAllClubsNearMe:output_type -> club.GetAllClubsNearMeResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -190,6 +516,78 @@ func file_service_proto_init() {
 				return nil
 			}
 		}
+		file_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTopClubsRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTopClubsResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTopClubsNearMeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTopClubsNearMeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAllClubsNearMeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_service_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAllClubsNearMeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -197,7 +595,7 @@ func file_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -37,32 +37,6 @@ func (M loggingMiddleware) GetClubById(arg0 context.Context, arg1 string) (res0 
 	return M.next.GetClubById(arg0, arg1)
 }
 
-func (M loggingMiddleware) GetTopClubs(arg0 context.Context, arg1 int32) (res0 string, res1 error) {
-	defer func(begin time.Time) {
-		M.logger.Log(
-			"method", "GetTopClubs",
-			"message", "GetTopClubs called",
-			"request", logGetTopClubsRequest{Limit: arg1},
-			"response", logGetTopClubsResponse{Result: res0},
-			"err", res1,
-			"took", time.Since(begin))
-	}(time.Now())
-	return M.next.GetTopClubs(arg0, arg1)
-}
-
-func (M loggingMiddleware) GetTopClubsNearMe(arg0 context.Context, arg1 int32) (res0 string, res1 error) {
-	defer func(begin time.Time) {
-		M.logger.Log(
-			"method", "GetTopClubsNearMe",
-			"message", "GetTopClubsNearMe called",
-			"request", logGetTopClubsNearMeRequest{Limit: arg1},
-			"response", logGetTopClubsNearMeResponse{Result: res0},
-			"err", res1,
-			"took", time.Since(begin))
-	}(time.Now())
-	return M.next.GetTopClubsNearMe(arg0, arg1)
-}
-
 func (M loggingMiddleware) GetAllClubsNearMe(arg0 context.Context, arg1 int32) (res0 string, res1 error) {
 	defer func(begin time.Time) {
 		M.logger.Log(
@@ -81,18 +55,6 @@ type (
 		Id string
 	}
 	logGetClubByIdResponse struct {
-		Result string
-	}
-	logGetTopClubsRequest struct {
-		Limit int32
-	}
-	logGetTopClubsResponse struct {
-		Result string
-	}
-	logGetTopClubsNearMeRequest struct {
-		Limit int32
-	}
-	logGetTopClubsNearMeResponse struct {
 		Result string
 	}
 	logGetAllClubsNearMeRequest struct {

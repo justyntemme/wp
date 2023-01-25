@@ -11,9 +11,7 @@ type ClubService interface {
 	// e.x: Foo(ctx context.Context,s string)(rs string, err error)
 	//Reads
 	GetClubById(ctx context.Context, id string) (result string, err error)
-	///GEospacial queries
-	GetTopClubs(ctx context.Context, limit int32) (result string, err error)
-	GetTopClubsNearMe(ctx context.Context, limit int32) (result string, err error)
+	///GEospacial query
 	GetAllClubsNearMe(ctx context.Context, limit int32) (result string, err error)
 
 	//Temp Writes (would like to use a kafka based solution)

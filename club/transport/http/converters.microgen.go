@@ -33,18 +33,6 @@ func _Decode_GetClubById_Request(_ context.Context, r *http.Request) (interface{
 	return &req, err
 }
 
-func _Decode_GetTopClubs_Request(_ context.Context, r *http.Request) (interface{}, error) {
-	var req transport.GetTopClubsRequest
-	err := json.NewDecoder(r.Body).Decode(&req)
-	return &req, err
-}
-
-func _Decode_GetTopClubsNearMe_Request(_ context.Context, r *http.Request) (interface{}, error) {
-	var req transport.GetTopClubsNearMeRequest
-	err := json.NewDecoder(r.Body).Decode(&req)
-	return &req, err
-}
-
 func _Decode_GetAllClubsNearMe_Request(_ context.Context, r *http.Request) (interface{}, error) {
 	var req transport.GetAllClubsNearMeRequest
 	err := json.NewDecoder(r.Body).Decode(&req)
@@ -53,18 +41,6 @@ func _Decode_GetAllClubsNearMe_Request(_ context.Context, r *http.Request) (inte
 
 func _Decode_GetClubById_Response(_ context.Context, r *http.Response) (interface{}, error) {
 	var resp transport.GetClubByIdResponse
-	err := json.NewDecoder(r.Body).Decode(&resp)
-	return &resp, err
-}
-
-func _Decode_GetTopClubs_Response(_ context.Context, r *http.Response) (interface{}, error) {
-	var resp transport.GetTopClubsResponse
-	err := json.NewDecoder(r.Body).Decode(&resp)
-	return &resp, err
-}
-
-func _Decode_GetTopClubsNearMe_Response(_ context.Context, r *http.Response) (interface{}, error) {
-	var resp transport.GetTopClubsNearMeResponse
 	err := json.NewDecoder(r.Body).Decode(&resp)
 	return &resp, err
 }
@@ -80,30 +56,12 @@ func _Encode_GetClubById_Request(ctx context.Context, r *http.Request, request i
 	return CommonHTTPRequestEncoder(ctx, r, request)
 }
 
-func _Encode_GetTopClubs_Request(ctx context.Context, r *http.Request, request interface{}) error {
-	r.URL.Path = path.Join(r.URL.Path, "get-top-clubs")
-	return CommonHTTPRequestEncoder(ctx, r, request)
-}
-
-func _Encode_GetTopClubsNearMe_Request(ctx context.Context, r *http.Request, request interface{}) error {
-	r.URL.Path = path.Join(r.URL.Path, "get-top-clubs-near-me")
-	return CommonHTTPRequestEncoder(ctx, r, request)
-}
-
 func _Encode_GetAllClubsNearMe_Request(ctx context.Context, r *http.Request, request interface{}) error {
 	r.URL.Path = path.Join(r.URL.Path, "get-all-clubs-near-me")
 	return CommonHTTPRequestEncoder(ctx, r, request)
 }
 
 func _Encode_GetClubById_Response(ctx context.Context, w http.ResponseWriter, response interface{}) error {
-	return CommonHTTPResponseEncoder(ctx, w, response)
-}
-
-func _Encode_GetTopClubs_Response(ctx context.Context, w http.ResponseWriter, response interface{}) error {
-	return CommonHTTPResponseEncoder(ctx, w, response)
-}
-
-func _Encode_GetTopClubsNearMe_Response(ctx context.Context, w http.ResponseWriter, response interface{}) error {
 	return CommonHTTPResponseEncoder(ctx, w, response)
 }
 

@@ -22,17 +22,5 @@ func NewHTTPClient(u *url.URL, opts ...httpkit.ClientOption) transport.Endpoints
 			_Decode_GetClubById_Response,
 			opts...,
 		).Endpoint(),
-		GetTopClubsEndpoint: httpkit.NewClient(
-			"POST", u,
-			_Encode_GetTopClubs_Request,
-			_Decode_GetTopClubs_Response,
-			opts...,
-		).Endpoint(),
-		GetTopClubsNearMeEndpoint: httpkit.NewClient(
-			"POST", u,
-			_Encode_GetTopClubsNearMe_Request,
-			_Decode_GetTopClubsNearMe_Response,
-			opts...,
-		).Endpoint(),
 	}
 }

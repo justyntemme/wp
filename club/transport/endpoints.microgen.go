@@ -13,7 +13,5 @@ type ManyToOneStreamEndpoint func(stream interface{}) error
 
 type EndpointsSet struct {
 	GetClubByIdEndpoint       endpoint.Endpoint
-	GetTopClubsEndpoint       endpoint.Endpoint
-	GetTopClubsNearMeEndpoint endpoint.Endpoint
 	GetAllClubsNearMeEndpoint endpoint.Endpoint
 }

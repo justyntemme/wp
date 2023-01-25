@@ -25,19 +25,5 @@ func NewGRPCClient(conn *grpc.ClientConn, addr string, opts ...grpckit.ClientOpt
 			pb.GetClubByIdResponse{},
 			opts...,
 		).Endpoint(),
-		GetTopClubsEndpoint: grpckit.NewClient(
-			conn, addr, "GetTopClubs",
-			_Encode_GetTopClubs_Request,
-			_Decode_GetTopClubs_Response,
-			pb.GetTopClubsResponse{},
-			opts...,
-		).Endpoint(),
-		GetTopClubsNearMeEndpoint: grpckit.NewClient(
-			conn, addr, "GetTopClubsNearMe",
-			_Encode_GetTopClubsNearMe_Request,
-			_Decode_GetTopClubsNearMe_Response,
-			pb.GetTopClubsNearMeResponse{},
-			opts...,
-		).Endpoint(),
 	}
 }

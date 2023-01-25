@@ -13,8 +13,6 @@ import (
 type clubServiceServer struct {
 	pb.UnimplementedClubServiceServer
 	getClubById       grpc.Handler
-	getTopClubs       grpc.Handler
-	getTopClubsNearMe grpc.Handler
 	getAllClubsNearMe grpc.Handler
 }
 
@@ -30,18 +28,6 @@ func NewGRPCServer(endpoints *transport.EndpointsSet, opts ...grpc.ServerOption)
 			endpoints.GetClubByIdEndpoint,
 			_Decode_GetClubById_Request,
 			_Encode_GetClubById_Response,
-			opts...,
-		),
-		getTopClubs: grpc.NewServer(
-			endpoints.GetTopClubsEndpoint,
-			_Decode_GetTopClubs_Request,
-			_Encode_GetTopClubs_Response,
-			opts...,
-		),
-		getTopClubsNearMe: grpc.NewServer(
-			endpoints.GetTopClubsNearMeEndpoint,
-			_Decode_GetTopClubsNearMe_Request,
-			_Encode_GetTopClubsNearMe_Response,
 			opts...,
 		),
 	}
@@ -65,22 +51,6 @@ func (S *clubServiceServer) GetClubById(ctx context.Context, req *pb.GetClubById
 		return nil, err
 	}
 	return resp.(*pb.GetClubByIdResponse), nil
-}
-
-func (S *clubServiceServer) GetTopClubs(ctx context.Context, req *pb.GetTopClubsRequest) (*pb.GetTopClubsResponse, error) {
-	_, resp, err := S.getTopClubs.ServeGRPC(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-	return resp.(*pb.GetTopClubsResponse), nil
-}
-
-func (S *clubServiceServer) GetTopClubsNearMe(ctx context.Context, req *pb.GetTopClubsNearMeRequest) (*pb.GetTopClubsNearMeResponse, error) {
-	_, resp, err := S.getTopClubsNearMe.ServeGRPC(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-	return resp.(*pb.GetTopClubsNearMeResponse), nil
 }
 
 func (S *clubServiceServer) GetAllClubsNearMe(ctx context.Context, req *pb.GetAllClubsNearMeRequest) (*pb.GetAllClubsNearMeResponse, error) {

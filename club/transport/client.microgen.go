@@ -21,30 +21,6 @@ func (set EndpointsSet) GetClubById(arg0 context.Context, arg1 string) (res0 str
 	return response.(*GetClubByIdResponse).Result, res1
 }
 
-func (set EndpointsSet) GetTopClubs(arg0 context.Context, arg1 int32) (res0 string, res1 error) {
-	request := GetTopClubsRequest{Limit: arg1}
-	response, res1 := set.GetTopClubsEndpoint(arg0, &request)
-	if res1 != nil {
-		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {
-			res1 = errors.New(e.Message())
-		}
-		return
-	}
-	return response.(*GetTopClubsResponse).Result, res1
-}
-
-func (set EndpointsSet) GetTopClubsNearMe(arg0 context.Context, arg1 int32) (res0 string, res1 error) {
-	request := GetTopClubsNearMeRequest{Limit: arg1}
-	response, res1 := set.GetTopClubsNearMeEndpoint(arg0, &request)
-	if res1 != nil {
-		if e, ok := status.FromError(res1); ok || e.Code() == codes.Internal || e.Code() == codes.Unknown {
-			res1 = errors.New(e.Message())
-		}
-		return
-	}
-	return response.(*GetTopClubsNearMeResponse).Result, res1
-}
-
 func (set EndpointsSet) GetAllClubsNearMe(arg0 context.Context, arg1 int32) (res0 string, res1 error) {
 	request := GetAllClubsNearMeRequest{Limit: arg1}
 	response, res1 := set.GetAllClubsNearMeEndpoint(arg0, &request)

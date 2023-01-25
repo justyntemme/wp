@@ -151,29 +151,9 @@ func (*ClubService) GetClubById(ctx context.Context, id string) (result string, 
 	return result, err
 }
 
-func (*ClubService) GetTopClubs(ctx context.Context, limit int32) (result string, err error) {
-
-	result, err = club.GetTopClubs(ctx, limit)
-	if err != nil {
-		fmt.Errorf(err.Error())
-	}
-
-	return result, err
-}
-
-func (*ClubService) GetTopClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
-
-	result, err = club.GetTopClubsNearMe(ctx, limit)
-	if err != nil {
-		fmt.Errorf(err.Error())
-	}
-
-	return result, err
-}
-
 func (*ClubService) GetAllClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
 
-	result, err = club.GetTopClubsNearMe(ctx, limit)
+	result, err = club.GetAllClubsNearMe(ctx, 54, 54, limit)
 	if err != nil {
 		fmt.Errorf(err.Error())
 	}

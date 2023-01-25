@@ -17,18 +17,6 @@ func NewHTTPHandler(endpoints *transport.EndpointsSet, opts ...http.ServerOption
 			_Decode_GetClubById_Request,
 			_Encode_GetClubById_Response,
 			opts...))
-	mux.Methods("POST").Path("/get-top-clubs").Handler(
-		http.NewServer(
-			endpoints.GetTopClubsEndpoint,
-			_Decode_GetTopClubs_Request,
-			_Encode_GetTopClubs_Response,
-			opts...))
-	mux.Methods("POST").Path("/get-top-clubs-near-me").Handler(
-		http.NewServer(
-			endpoints.GetTopClubsNearMeEndpoint,
-			_Decode_GetTopClubsNearMe_Request,
-			_Encode_GetTopClubsNearMe_Response,
-			opts...))
 	mux.Methods("POST").Path("/get-all-clubs-near-me").Handler(
 		http.NewServer(
 			endpoints.GetAllClubsNearMeEndpoint,

@@ -18,22 +18,6 @@ func _Encode_GetClubById_Request(ctx context.Context, request interface{}) (inte
 	return &pb.GetClubByIdRequest{Id: req.Id}, nil
 }
 
-func _Encode_GetTopClubs_Request(ctx context.Context, request interface{}) (interface{}, error) {
-	if request == nil {
-		return nil, errors.New("nil GetTopClubsRequest")
-	}
-	req := request.(*transport.GetTopClubsRequest)
-	return &pb.GetTopClubsRequest{Limit: req.Limit}, nil
-}
-
-func _Encode_GetTopClubsNearMe_Request(ctx context.Context, request interface{}) (interface{}, error) {
-	if request == nil {
-		return nil, errors.New("nil GetTopClubsNearMeRequest")
-	}
-	req := request.(*transport.GetTopClubsNearMeRequest)
-	return &pb.GetTopClubsNearMeRequest{Limit: req.Limit}, nil
-}
-
 func _Encode_GetAllClubsNearMe_Request(ctx context.Context, request interface{}) (interface{}, error) {
 	if request == nil {
 		return nil, errors.New("nil GetAllClubsNearMeRequest")
@@ -48,22 +32,6 @@ func _Encode_GetClubById_Response(ctx context.Context, response interface{}) (in
 	}
 	resp := response.(*transport.GetClubByIdResponse)
 	return &pb.GetClubByIdResponse{Result: resp.Result}, nil
-}
-
-func _Encode_GetTopClubs_Response(ctx context.Context, response interface{}) (interface{}, error) {
-	if response == nil {
-		return nil, errors.New("nil GetTopClubsResponse")
-	}
-	resp := response.(*transport.GetTopClubsResponse)
-	return &pb.GetTopClubsResponse{Result: resp.Result}, nil
-}
-
-func _Encode_GetTopClubsNearMe_Response(ctx context.Context, response interface{}) (interface{}, error) {
-	if response == nil {
-		return nil, errors.New("nil GetTopClubsNearMeResponse")
-	}
-	resp := response.(*transport.GetTopClubsNearMeResponse)
-	return &pb.GetTopClubsNearMeResponse{Result: resp.Result}, nil
 }
 
 func _Encode_GetAllClubsNearMe_Response(ctx context.Context, response interface{}) (interface{}, error) {
@@ -82,22 +50,6 @@ func _Decode_GetClubById_Request(ctx context.Context, request interface{}) (inte
 	return &transport.GetClubByIdRequest{Id: string(req.Id)}, nil
 }
 
-func _Decode_GetTopClubs_Request(ctx context.Context, request interface{}) (interface{}, error) {
-	if request == nil {
-		return nil, errors.New("nil GetTopClubsRequest")
-	}
-	req := request.(*pb.GetTopClubsRequest)
-	return &transport.GetTopClubsRequest{Limit: int32(req.Limit)}, nil
-}
-
-func _Decode_GetTopClubsNearMe_Request(ctx context.Context, request interface{}) (interface{}, error) {
-	if request == nil {
-		return nil, errors.New("nil GetTopClubsNearMeRequest")
-	}
-	req := request.(*pb.GetTopClubsNearMeRequest)
-	return &transport.GetTopClubsNearMeRequest{Limit: int32(req.Limit)}, nil
-}
-
 func _Decode_GetAllClubsNearMe_Request(ctx context.Context, request interface{}) (interface{}, error) {
 	if request == nil {
 		return nil, errors.New("nil GetAllClubsNearMeRequest")
@@ -112,22 +64,6 @@ func _Decode_GetClubById_Response(ctx context.Context, response interface{}) (in
 	}
 	resp := response.(*pb.GetClubByIdResponse)
 	return &transport.GetClubByIdResponse{Result: string(resp.Result)}, nil
-}
-
-func _Decode_GetTopClubs_Response(ctx context.Context, response interface{}) (interface{}, error) {
-	if response == nil {
-		return nil, errors.New("nil GetTopClubsResponse")
-	}
-	resp := response.(*pb.GetTopClubsResponse)
-	return &transport.GetTopClubsResponse{Result: string(resp.Result)}, nil
-}
-
-func _Decode_GetTopClubsNearMe_Response(ctx context.Context, response interface{}) (interface{}, error) {
-	if response == nil {
-		return nil, errors.New("nil GetTopClubsNearMeResponse")
-	}
-	resp := response.(*pb.GetTopClubsNearMeResponse)
-	return &transport.GetTopClubsNearMeResponse{Result: string(resp.Result)}, nil
 }
 
 func _Decode_GetAllClubsNearMe_Response(ctx context.Context, response interface{}) (interface{}, error) {

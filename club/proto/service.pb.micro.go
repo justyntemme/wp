@@ -37,8 +37,6 @@ func NewClubServiceEndpoints() []*api.Endpoint {
 
 type ClubService interface {
 	GetClubById(ctx context.Context, in *GetClubByIdRequest, opts ...client.CallOption) (*GetClubByIdResponse, error)
-	GetTopClubs(ctx context.Context, in *GetTopClubsRequest, opts ...client.CallOption) (*GetTopClubsResponse, error)
-	GetTopClubsNearMe(ctx context.Context, in *GetTopClubsNearMeRequest, opts ...client.CallOption) (*GetTopClubsNearMeResponse, error)
 	GetAllClubsNearMe(ctx context.Context, in *GetAllClubsNearMeRequest, opts ...client.CallOption) (*GetAllClubsNearMeResponse, error)
 }
 
@@ -64,26 +62,6 @@ func (c *clubService) GetClubById(ctx context.Context, in *GetClubByIdRequest, o
 	return out, nil
 }
 
-func (c *clubService) GetTopClubs(ctx context.Context, in *GetTopClubsRequest, opts ...client.CallOption) (*GetTopClubsResponse, error) {
-	req := c.c.NewRequest(c.name, "ClubService.GetTopClubs", in)
-	out := new(GetTopClubsResponse)
-	err := c.c.Call(ctx, req, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *clubService) GetTopClubsNearMe(ctx context.Context, in *GetTopClubsNearMeRequest, opts ...client.CallOption) (*GetTopClubsNearMeResponse, error) {
-	req := c.c.NewRequest(c.name, "ClubService.GetTopClubsNearMe", in)
-	out := new(GetTopClubsNearMeResponse)
-	err := c.c.Call(ctx, req, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *clubService) GetAllClubsNearMe(ctx context.Context, in *GetAllClubsNearMeRequest, opts ...client.CallOption) (*GetAllClubsNearMeResponse, error) {
 	req := c.c.NewRequest(c.name, "ClubService.GetAllClubsNearMe", in)
 	out := new(GetAllClubsNearMeResponse)
@@ -98,16 +76,12 @@ func (c *clubService) GetAllClubsNearMe(ctx context.Context, in *GetAllClubsNear
 
 type ClubServiceHandler interface {
 	GetClubById(context.Context, *GetClubByIdRequest, *GetClubByIdResponse) error
-	GetTopClubs(context.Context, *GetTopClubsRequest, *GetTopClubsResponse) error
-	GetTopClubsNearMe(context.Context, *GetTopClubsNearMeRequest, *GetTopClubsNearMeResponse) error
 	GetAllClubsNearMe(context.Context, *GetAllClubsNearMeRequest, *GetAllClubsNearMeResponse) error
 }
 
 func RegisterClubServiceHandler(s server.Server, hdlr ClubServiceHandler, opts ...server.HandlerOption) error {
 	type clubService interface {
 		GetClubById(ctx context.Context, in *GetClubByIdRequest, out *GetClubByIdResponse) error
-		GetTopClubs(ctx context.Context, in *GetTopClubsRequest, out *GetTopClubsResponse) error
-		GetTopClubsNearMe(ctx context.Context, in *GetTopClubsNearMeRequest, out *GetTopClubsNearMeResponse) error
 		GetAllClubsNearMe(ctx context.Context, in *GetAllClubsNearMeRequest, out *GetAllClubsNearMeResponse) error
 	}
 	type ClubService struct {
@@ -123,14 +97,6 @@ type clubServiceHandler struct {
 
 func (h *clubServiceHandler) GetClubById(ctx context.Context, in *GetClubByIdRequest, out *GetClubByIdResponse) error {
 	return h.ClubServiceHandler.GetClubById(ctx, in, out)
-}
-
-func (h *clubServiceHandler) GetTopClubs(ctx context.Context, in *GetTopClubsRequest, out *GetTopClubsResponse) error {
-	return h.ClubServiceHandler.GetTopClubs(ctx, in, out)
-}
-
-func (h *clubServiceHandler) GetTopClubsNearMe(ctx context.Context, in *GetTopClubsNearMeRequest, out *GetTopClubsNearMeResponse) error {
-	return h.ClubServiceHandler.GetTopClubsNearMe(ctx, in, out)
 }
 
 func (h *clubServiceHandler) GetAllClubsNearMe(ctx context.Context, in *GetAllClubsNearMeRequest, out *GetAllClubsNearMeResponse) error {

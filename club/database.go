@@ -57,10 +57,7 @@ func GetClubsById(ctx context.Context, id string) (result string, err error) {
 			{Key: "cuid", Value: 1},
 		}},
 	}
-	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
-	// match := bson.D{
-	// 	"$match",
-	// 	bson.E{"uuid", id}}
+
 	var pipeline []bson.D
 
 	pipeline = append(pipeline, matchStage, projectStage)
@@ -121,28 +118,27 @@ func GetTopClubsNearMe(ctx context.Context, limit int32) (result string, err err
 
 }
 
-// TODO
-func GetAllClubsNearMe(ctx context.Context, limit int32) (result string, err error) {
-
+func GetAllClubsNearMe(ctx context.Context, lat float64, lon float64, limit int32) (result string, err error) {
 	matchStage := bson.D{
-		{Key: "$match", Value: bson.D{
-			{Key: "cuid", Value: limit},
-		},
-		},
+		{Key: "$geoNear", Value: bson.D{
+			{Key: "near", Value: bson.D{
+				{Key: "type", Value: "Point"},
+				{Key: "coordinates", Value: []float64{lon, lat}},
+			}},
+			{Key: "maxDistance", Value: limit},
+			{Key: "spherical", Value: true},
+			{Key: "distanceField", Value: "distance"},
+		}},
 	}
 	projectStage := bson.D{
 		{Key: "$project", Value: bson.D{
 			{Key: "cuid", Value: 1},
+			{Key: "distance", Value: 1},
 		}},
 	}
-	// pipeline = append(pipeline, bson.D{{"$match", bson.D{{"uuid", bson.D{{"$in", []string{id}}}}, bson.A{}}}})
-	// match := bson.D{
-	// 	"$match",
-	// 	bson.E{"uuid", id}}
 	var pipeline []bson.D
 
 	pipeline = append(pipeline, matchStage, projectStage)
 
 	return query(ctx, pipeline)
-
 }

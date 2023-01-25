@@ -96,3 +96,31 @@ func GetVotesByUserId(ctx context.Context, id string) (result string, err error)
 	return result, err
 
 }
+
+func GetClubsWithMostVotes(ctx context.Context) (result string, err error) {
+	var pipeline []bson.D
+
+	groupStage := bson.D{
+		{Key: "$group", Value: bson.D{
+			{Key: "_id", Value: "$cuid"},
+			{Key: "count", Value: bson.D{
+				{Key: "$sum", Value: 1},
+			}},
+		}},
+	}
+
+	sortStage := bson.D{
+		{Key: "$sort", Value: bson.D{
+			{Key: "count", Value: -1},
+		}},
+	}
+
+	pipeline = append(pipeline, groupStage, sortStage)
+
+	result, err = query(ctx, pipeline)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return result, err
+}

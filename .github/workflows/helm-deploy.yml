@@ -20,7 +20,9 @@ jobs:
         microk8s.config > ~/.kube/config
 
     - name: Login to Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: |
+        echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
+        docker pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
     
     - name: Deploy the Helm chart
       run: |

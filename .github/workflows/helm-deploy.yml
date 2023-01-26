@@ -22,8 +22,11 @@ jobs:
     - name: Login to Docker Hub
       run: |
         echo ${{ secrets.DOCKER_PASSWORD }} | microk8s docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
-        microk8s docker pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+        docker pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+        docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s ctr image import -
+
     
     - name: Deploy the Helm chart
       run: |
-          microk8s helm upgrade --install ${{ matrix.service }}-svc ./${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+          microk8s helm upgrade --install ${{ matrix.service }}-svc ./${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  
+          # --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}

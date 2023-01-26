@@ -1,4 +1,4 @@
-FROM golang:latest as builder
+FROM golang:alpine as builder
 WORKDIR /go/src/github.com/justyntemme/wp
 COPY ./ ./
 

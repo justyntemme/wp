@@ -26,5 +26,4 @@ jobs:
     
     - name: Deploy the Helm chart
       run: |
-          microk8s helm upgrade --install ${{ matrix.service }}-svc ./${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }} 
-          # --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+          microk8s helm upgrade --install ${{ matrix.service }}-svc ./${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}

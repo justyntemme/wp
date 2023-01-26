@@ -23,7 +23,7 @@ jobs:
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"
-        docker build --cache-from docker.io/justyntemme/${{ matrix.service }}-svc . --file Dockerfile --target ${{ matrix.service }}-server-run --tag "docker.io/justyntemme/${{ matrix.service }}-svc:${ github.sha }"
+        docker build --cache-from docker.io/justyntemme/${{ matrix.service }}-svc . --file Dockerfile --target ${{ matrix.service }}-server-run --tag "docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
     - name: Push the image
       run: |
         docker push "docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"

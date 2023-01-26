@@ -18,13 +18,9 @@ jobs:
     - name: Install and configure microk8s
       run: |
         microk8s.config > ~/.kube/config
-    
-    # - name: Install Helm
-    #   run: |
-    #     VERSION=$(curl --silent https://api.github.com/repos/helm/helm/releases/latest | grep tag_name | cut -d '"' -f 4)
-    #     curl https://get.helm.sh/helm-$VERSION-linux-amd64.tar.gz -o helm.tar.gz
-    #     tar -zxvf helm.tar.gz
-    #     sudo mv linux-amd64/helm /usr/local/bin/
+
+    - name: Login to Docker Hub
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
     
     - name: Deploy the Helm chart
       run: |

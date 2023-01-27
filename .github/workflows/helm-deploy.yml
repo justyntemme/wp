@@ -31,8 +31,6 @@ jobs:
         docker tag justyntemme/${{ matrix.service }}-svc:${{ github.sha }} justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG
         docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s ctr image import -
         
-
-    
     - name: Deploy the Helm chart
       run: |
           microk8s helm upgrade --install ${{ matrix.service }}-svc ./${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  

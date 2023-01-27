@@ -27,7 +27,10 @@ jobs:
         docker pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
     - name: import docker image into microk8s
       run: |
+        IMAGE_TAG=$(date +%s)
+        docker tag justyntemme/${{ matrix.service }}-svc:${{ github.sha }} justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG
         docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s ctr image import -
+        
 
     
     - name: Deploy the Helm chart

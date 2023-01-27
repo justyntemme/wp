@@ -17,7 +17,7 @@ jobs:
       with:
         images: "docker.io/justyntemme/${{ matrix.service }}-svc"
     - name: Login to Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --passwoword ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
       # working-directory: ./${{ matrix.service }}
       run: |

@@ -22,7 +22,11 @@ jobs:
     - name: Login to Docker Hub
       run: |
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+    - name: pull down docker image
+      run: |
         docker pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+    - name: import docker image into microk8s
+      run: |
         docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s ctr image import -
 
     

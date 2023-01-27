@@ -19,7 +19,6 @@ jobs:
     - name: Login to Docker Hub
       run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
     - name: Build the Docker image
-      # working-directory: ./${{ matrix.service }}
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"
@@ -27,8 +26,7 @@ jobs:
     - name: Push the image
       run: |
         docker push "docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
-    # outputs:
-    #   image_tag: ${{ steps.build.outputs.image_tag }}
+
      
 
    

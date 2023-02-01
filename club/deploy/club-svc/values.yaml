@@ -37,8 +37,10 @@ securityContext: {}
   # runAsUser: 1000
 
 service:                                                                                                                                      
-  type: ClusterIP                                                                                                                             
+  type: LoadBlancer                                                                                                                             
   port: 8080
+  nodeSelector:
+    app: club-svc
 
 ingress:
   enabled: false

@@ -1,1 +1,1 @@
-goplantuml ../user ../club > diagram_file.pum1
+goplantuml ../user ../vote ../club > diagram_file.pum1

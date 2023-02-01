@@ -2,10 +2,23 @@
 namespace service {
     interface ClubService  {
         + GetClubById(ctx context.Context, id string) (string, error)
+        + GetAllClubsNearMe(ctx context.Context, limit int32) (string, error)
 
     }
     interface UserService  {
         + GetUserById(ctx context.Context, id string) (string, error)
+
+    }
+    interface VoteService  {
+        + GetVoteById(ctx context.Context, VoteId string) (string, error)
+        + GetVotesByUserId(ctx context.Context, UserId string) (string, error)
+        + GetVotesByClubId(ctx context.Context, ClubId string) (string, error)
+
+    }
+    class repsonse << (S,Aquamarine) >> {
+        + Id string
+        + User_id string
+        + Club_id string
 
     }
 }

@@ -37,7 +37,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:                                                                                                                                      
-  type: LoadBlancer                                                                                                                             
+  type: LoadBalancer                                                                                                                             
   port: 8080
   nodeSelector:
     app: club-svc

@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: localhost:3200/justyntemme/vote-svc
+  repository: localhost:32000/justyntemme/vote-svc
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

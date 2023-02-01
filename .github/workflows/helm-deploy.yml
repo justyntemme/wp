@@ -19,17 +19,17 @@ jobs:
       run: |
         microk8s.config > ~/.kube/config
 
-    - name: Login to Docker Hub
-      run: |
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-    - name: pull down docker image
-      run: |
-        docker -H unix:///var/snap/microk8s/current/docker.sock pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
-    - name: import docker image into microk8s
-      run: |
-        IMAGE_TAG=$(date +%s)
-        docker -H unix:///var/snap/microk8s/current/docker.sock tag justyntemme/${{ matrix.service }}-svc:${{ github.sha }} justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG
-        # docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s docker image import -
+    # - name: Login to Docker Hub
+    #   run: |
+    #     echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+    # - name: pull down docker image
+    #   run: |
+    #     docker -H unix:///var/snap/microk8s/current/docker.sock pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+    # - name: import docker image into microk8s
+    #   run: |
+    #     IMAGE_TAG=$(date +%s)
+    #     docker tag localhost:3200/justyntemme/${{ matrix.service }}-svc:${{ github.sha }} localhost:3200justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG
+    #     # docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s docker image import -
         
     - name: Deploy the Helm chart
       run: |

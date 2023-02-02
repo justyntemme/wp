@@ -35,12 +35,9 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
 service:                                                                                                                                      
-  type: LoadBalancer                                                                                                                             
+  type: ClusterIP                                                                                                                             
   port: 8080
-  nodeSelector:
-    app: vote-svc
 
 
 ingress:

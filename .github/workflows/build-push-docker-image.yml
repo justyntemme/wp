@@ -17,8 +17,8 @@ jobs:
       if: steps.checkout-code.outcome == 'success'
       run: |
         IMAGE_TAG=$(date +%s)
-        lxc exec microk8s -- mkdir /tmp/$IMAGE_TAG
-        lxc file push ./ microk8s/tmp/$IMAGE_TAG --recursive
+        lxc exec microk8s -- mkdir /tmp/${{ github.sha }}
+        lxc file push ./ microk8s/tmp/${{ github.sha }} --recursive
         
     #   run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
     - name: build-docker-image

@@ -12,9 +12,11 @@ jobs:
       matrix:
         service: [user, club, vote]
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
+    - name: Run checkouts in LXC Container
+      run: |
+        lxc exec microk8s -- /bin/bash -c "
+          git clone https://github.com/justyntemme/wp.git
+        "
     - name: Install and configure microk8s
       run: |
         lxc exec microk8s -- microk8s.config > ~/.kube/config

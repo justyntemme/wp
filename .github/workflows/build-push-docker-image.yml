@@ -22,10 +22,10 @@ jobs:
       run: |
         IMAGE_TAG=$(date +%s)
         echo "::set-output name=image_tag::$IMAGE_TAG"
-        docker build --cache-from localhost:32000/justyntemme/${{ matrix.service }}-svc . --file Dockerfile --target ${{ matrix.service }}-server-run --tag "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
+        lxc exec microk8s -- docker build --cache-from localhost:32000/justyntemme/${{ matrix.service }}-svc . --file Dockerfile --target ${{ matrix.service }}-server-run --tag "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
     - name: Push the image
       run: |
-        docker push "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
+        lxc exec microk8s -- docker push "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
 
      
 

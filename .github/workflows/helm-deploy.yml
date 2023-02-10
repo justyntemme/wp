@@ -12,11 +12,9 @@ jobs:
       matrix:
         service: [user, club, vote]
     steps:
-    - name: Run checkouts in LXC Container
-      run: |
-        lxc exec microk8s -- /bin/bash -c "
-          git clone https://github.com/justyntemme/wp.git
-        "
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
     - name: Install and configure microk8s
       run: |
         lxc exec microk8s -- microk8s.config > ~/.kube/config
@@ -29,11 +27,14 @@ jobs:
     #     docker -H unix:///var/snap/microk8s/current/docker.sock pull justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
     # - name: import docker image into microk8s
     #   run: |
-    #     IMAGE_TAG=$(date +%s)
+    #     
     #     docker tag localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }} localhost:32000justyntemme/${{ matrix.service }}-svc:$IMAGE_TAG
     #     # docker save justyntemme/${{ matrix.service }}-svc:${{ github.sha }} | microk8s docker image import -
-        
+    - name: Copy directory to LXC Container
+      run: |
+        IMAGE_TAG=$(date +%s)
+        lxc file push ./ microk8s/tmp/$IMAGE_TAG --recursive
     - name: Deploy the Helm chart
       run: |
-          lxc exec microk8s -- microk8s helm upgrade --install ${{ matrix.service }}-svc ./${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  
+          lxc exec microk8s -- microk8s helm upgrade --install ${{ matrix.service }}-svc /tmp/$IMAGE_TAG/${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  
           # --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}

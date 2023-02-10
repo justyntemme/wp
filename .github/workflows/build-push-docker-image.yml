@@ -19,7 +19,8 @@ jobs:
     - name: Build the Docker image
       run: |
         IMAGE_TAG=$(date +%s)
-        lxc exec microk8s -- docker build --cache-from localhost:32000/justyntemme/${{ matrix.service }}-svc . --file /tmp/$IMAGE_TAG/wp/Dockerfile --target ${{ matrix.service }}-server-run --tag "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"
+        lxc exec my-container -- /bin/bash -c "cd /tmp/$IMAGE_TAG/wp/ && docker build --cache-from localhost:32000/justyntemme/${{ matrix.service }}-svc . --target ${{ matrix.service }}-server-run --tag "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}""
+        lxc exec microk8s -- 
     - name: Push the image
       run: |
         lxc exec microk8s -- docker push "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}"

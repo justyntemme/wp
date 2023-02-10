@@ -26,7 +26,7 @@ jobs:
       #if: steps.copy-files.outcome == 'success'
       run: |
         IMAGE_TAG=$(date +%s)
-        lxc exec microk8s -- /bin/bash -c "cd /tmp/${{ github.sha }}/wp/${{ matrix.service }} && docker build --cache-from localhost:32000/justyntemme/${{ matrix.service }}-svc . --target ${{ matrix.service }}-server-run --tag "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}""
+        lxc exec microk8s -- /bin/bash -c "cd /tmp/${{ github.sha }}/wp/ && docker build --cache-from localhost:32000/justyntemme/${{ matrix.service }}-svc . --target ${{ matrix.service }}-server-run --tag "localhost:32000/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}""
 
     - name: Push the image
       #if: steps.build-docker-image.outcome == 'success'

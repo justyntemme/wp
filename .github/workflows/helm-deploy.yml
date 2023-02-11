@@ -46,7 +46,7 @@ jobs:
     - name: Get env variables
       if: steps.deploy-helm-chart.outcome == 'success'
       env:
-        SERVICE_NAME: ${{ matrix.service }}-svc-${{ github.sha }}
+        SERVICE_NAME: ${{ matrix.service }}-svc
       run: |
         HOST=$(kubectl describe svc $SERVICE_NAME | grep 'NodePort:' | awk '{print $3}')
         PORT=$(kubectl get svc $SERVICE_NAME -o jsonpath='{.spec.ports[0].nodePort}')

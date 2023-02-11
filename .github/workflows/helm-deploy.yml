@@ -39,14 +39,14 @@ jobs:
       id: deploy-helm-chart
       run: |
           lxc exec microk8s -- microk8s helm upgrade --install ${{ matrix.service }}-svc /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{ matrix.service }}-svc --set image.tag=${{ github.sha }}  
-          # --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc:${{ github.sha }}
+          # --set image.repository=docker.io/justyntemme/${{ matrix.service }}-svc-${{ github.sha }}
     - name: Wait for deployment to be ready
       run: |
         lxc exec microk8s -- microk8s kubectl wait --for=condition=available --timeout=600s deployment/${{ matrix.service }}-svc
     - name: Get env variables
       if: steps.deploy-helm-chart.outcome == 'success'
       env:
-        SERVICE_NAME: ${{ matrix.service }}-svc:${{ github.sha }}
+        SERVICE_NAME: ${{ matrix.service }}-svc-${{ github.sha }}
       run: |
         HOST=$(kubectl describe svc $SERVICE_NAME | grep 'NodePort:' | awk '{print $3}')
         PORT=$(kubectl get svc $SERVICE_NAME -o jsonpath='{.spec.ports[0].nodePort}')

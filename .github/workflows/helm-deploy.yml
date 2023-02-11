@@ -53,7 +53,7 @@ jobs:
         echo "{\"host\":\"$HOST\",\"port\":$PORT}" | jq . > ${{ matrix.service }}-env.json
     - name: push file to lxc Container
       run: |
-        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/${{ matrix.service }}-env.json
+        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}-env.json
 
     - name: Run postman collection
       run: |

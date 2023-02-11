@@ -51,6 +51,9 @@ jobs:
         HOST=$(kubectl describe svc $SERVICE_NAME | grep 'NodePort:' | awk '{print $3}')
         PORT=$(kubectl get svc $SERVICE_NAME -o jsonpath='{.spec.ports[0].nodePort}')
         echo "{\"host\":\"$HOST\",\"port\":$PORT}" | jq . > ${{ matrix.service }}-env.json
+    - name: push file to lxc Container
+      run: |
+        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/${{ matrix.service }}-env.json
 
     - name: Run postman collection
       run: |

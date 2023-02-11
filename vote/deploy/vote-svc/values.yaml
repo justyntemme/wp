@@ -36,7 +36,7 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 service:                                                                                                                                      
-  type: ClusterIP                                                                                                                             
+  type: NodePort                                                                                                                         
   port: 8080
 
 

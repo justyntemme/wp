@@ -58,4 +58,4 @@ jobs:
     - name: Run postman collection
       if: matrix.service == 'vote'
       run: |
-        lxc exec microk8s -- newman run -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-test.json 
+        lxc exec microk8s -- newman run -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-svc-test.json 

@@ -47,7 +47,38 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GetVotesByUserId",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"club_id\": \"a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n93849\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/get-votes-byclub-id",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"get-votes-byclub-id"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": [],
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	]
 }

@@ -53,9 +53,9 @@ jobs:
         echo "{\"host\":\"10.152.183.33\",\"port\":8080}" | jq . > ${{ matrix.service }}-env.json
     - name: push file to lxc Container
       run: |
-        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-env.json
+        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json
 
     - name: Run postman collection
       if: matrix.service == 'vote'
       run: |
-        lxc exec microk8s -- newman run -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-env.json /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-test.json 
+        lxc exec microk8s -- newman run -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-env.json /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-test.json 

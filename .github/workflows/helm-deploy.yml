@@ -50,11 +50,12 @@ jobs:
       run: |
         HOST=$(kubectl describe svc $SERVICE_NAME | grep 'NodePort:' | awk '{print $3}')
         PORT=$(kubectl get svc $SERVICE_NAME -o jsonpath='{.spec.ports[0].nodePort}')
-        echo "{\"host\":\"$HOST\",\"port\":8080}" | jq . > ${{ matrix.service }}-env.json
+        echo "{\"host\":\"10.152.183.33\",\"port\":8080}" | jq . > ${{ matrix.service }}-env.json
     - name: push file to lxc Container
       run: |
-        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}-env.json
+        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-env.json
 
     - name: Run postman collection
+      if: matrix.service == 'vote'
       run: |
-        lxc exec microk8s -- newman run -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}-env.json /tmp/${{ github.sha }}/wp/wp-postman-collection.json
+        lxc exec microk8s -- newman run -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-env.json /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-test.json 

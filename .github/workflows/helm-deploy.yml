@@ -25,18 +25,18 @@ jobs:
     - name: Wait for deployment to be ready
       run: |
         lxc exec microk8s -- microk8s kubectl wait --for=condition=available --timeout=600s deployment/${{ matrix.service }}-svc
-    - name: Get env variables
-      if: steps.deploy-helm-chart.outcome == 'success'
-      env:
-        SERVICE_NAME: ${{ matrix.service }}-svc
-      run: |
-        HOST=$(kubectl describe svc $SERVICE_NAME | grep 'NodePort:' | awk '{print $3}')
-        PORT=$(kubectl get svc $SERVICE_NAME -o jsonpath='{.spec.ports[0].nodePort}')
-        echo "{\"host\":\"10.152.183.33\",\"port\":8080}" | jq . > ${{ matrix.service }}-env.json
-    - name: push file to lxc Container
-      run: |
-        lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json
-    - name: Run postman collection
-      if: matrix.service == 'vote'
-      run: |
-        lxc exec microk8s -- newman run /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-svc-test.json -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json 
+    # - name: Get env variables
+    #   if: steps.deploy-helm-chart.outcome == 'success'
+    #   env:
+    #     SERVICE_NAME: ${{ matrix.service }}-svc
+    #   run: |
+    #     HOST=$(kubectl describe svc $SERVICE_NAME | grep 'NodePort:' | awk '{print $3}')
+    #     PORT=$(kubectl get svc $SERVICE_NAME -o jsonpath='{.spec.ports[0].nodePort}')
+    #     echo "{\"host\":\"10.152.183.33\",\"port\":8080}" | jq . > ${{ matrix.service }}-env.json
+    # - name: push file to lxc Container
+    #   run: |
+    #     lxc file push ${{ matrix.service }}-env.json microk8s/tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json
+    # - name: Run postman collection
+    #   if: matrix.service == 'vote'
+    #   run: |
+    #     lxc exec microk8s -- newman run /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-svc-test.json -e /tmp/${{ github.sha }}/wp/${{ matrix.service }}/deploy/${{matrix.service}}-svc/${{matrix.service}}-env.json 
